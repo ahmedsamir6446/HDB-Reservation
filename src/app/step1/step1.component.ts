@@ -12,6 +12,7 @@ export class Step1Component implements OnInit {
   resAmountTrue = true;
   payDate;
   payWayOption: string;
+  birthdayDate;
   payWayList = [
     { name: 'Swift', value: 1 },
     { name: 'ACH', value: 2 },
@@ -30,11 +31,18 @@ export class Step1Component implements OnInit {
   name = localStorage.getItem('name');
 
 
+  getBirthday (natId: string) {
+    const birthdayDateUnformatted = natId.substring(1, 7);
+    this.birthdayDate = birthdayDateUnformatted.replace(/(\d{2})(\d{2})(\d{2})/, '19$1-$2-$3');
+  }
+
+
   constructor(public router: Router) {
   }
 
   ngOnInit() {
-
+    this.getBirthday(this.natId);
+    localStorage.setItem('birthdayDate', this.birthdayDate);
   }
 
   getResNum(resNum) {

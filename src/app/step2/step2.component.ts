@@ -17,8 +17,15 @@ export class Step2Component implements OnInit {
   spaceNo;
 
   govList = [
-    {gov : 'cairo', value : 1},
-    {gov : 'Sohag', value : 2},
+    {gov : 'القاهرة', value : 1},
+    {gov : 'الجيزة', value : 2},
+    {gov : 'القليوبية', value : 3},
+    {gov : 'الشرقية', value : 4},
+    {gov : 'دمياط', value : 5},
+    {gov : 'الإسكندرية', value : 6},
+    {gov : 'بنى سويف', value : 7},
+    {gov : 'سوهاج', value : 8},
+    {gov : 'اسوان', value : 9}
   ]; // government
   areaList = [
     {area : '4995', vlaue : 1},

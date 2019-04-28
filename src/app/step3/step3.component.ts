@@ -30,6 +30,7 @@ export class Step3Component implements OnInit {
   spaceNo = localStorage.getItem('spaceNo');
   adj = localStorage.getItem('adj');
   reg = localStorage.getItem('reg');
+  birthdayDate = localStorage.getItem ('birthdayDate');
 
   constructor(public router: Router) { }
 
