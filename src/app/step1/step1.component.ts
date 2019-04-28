@@ -17,7 +17,7 @@ export class Step1Component implements OnInit {
     { name: 'ACH', value: 2 },
     { name: 'تحویل داخلى بنك التعمیر والاسكان', value: 3 }
   ];
-  model;
+  model: any;
 
   natId = localStorage.getItem('natID');
   phoneNo = localStorage.getItem('phoneNo');
