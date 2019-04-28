@@ -1,0 +1,80 @@
+<app-header [auth]="true"></app-header>
+<div class="wrapper">
+  <div class="container">
+    <div class="text-center">
+      <img src="../../assets/img/step2.jpg" alt="">
+    </div>
+    <section class="stepB">
+      <h4 class="green-bg white py-3 pl-2"> بيانات الوحده السكنيه</h4>
+      <div class="row mt-3 mx-0">
+
+        <div class="col-6">
+          <div class="form-group mt-3">
+            <label for="pay-way">المحافظه *</label>
+            <select [(ngModel)]="gov"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let gov of govList">{{gov.gov}}</option>
+                    </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="pay-way">المنطقه *</label>
+            <select [(ngModel)]="reg"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let reg of regList">{{reg.reg}}</option>
+                    </select>
+          </div>
+          <div class="form-group mt-3">
+            <label for="pay-way">المجاوره *</label>
+            <select [(ngModel)]="adj"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let adj of adjList">{{adj.adj}}</option>
+                    </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="pay-way">المساحه *</label>
+            <select [(ngModel)]="area"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let area of areaList">{{area.area}}</option>
+                    </select>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group mt-3">
+            <label for="pay-way">المدينه *</label>
+            <select [(ngModel)]="city"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let city of cityList">{{city.city}}</option>
+                    </select>
+          </div>
+
+
+          <div class="form-group mt-3">
+            <label for="pay-way">الحي *</label>
+            <select [(ngModel)]="neih"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let neih of neihList">{{neih.neih}}</option>
+                    </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="pay-way">رقم القطعه *</label>
+            <select [(ngModel)]="spaceNo"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let spaceNo of spaceNoList">{{spaceNo.spaceNo}}</option>
+                    </select>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div class="text-center">
+      <button (click)="step2Next()"
+      [disabled]="!gov || !neih || !city || !area || !spaceNo || !adj || !reg"
+      class="btn green-bg white nextbtn">تاكيد </button>
+      <button class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
+    </div>
+  </div>
+
+</div>

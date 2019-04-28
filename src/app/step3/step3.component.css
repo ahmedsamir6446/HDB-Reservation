@@ -1,0 +1,43 @@
+section.stepA {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 6px;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+section.stepB {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 6px;
+  padding: 20px 0;
+  margin-top: 40px;
+  padding-top: 0;
+}
+.cell-detail {
+  line-height: 40px;
+  padding-right: 20px;
+  border-radius: 0.25rem;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+button.nextbtn {
+  margin-bottom: 110px;
+  margin-top: 20px;
+  padding: 6px 25px;
+}
+div.promise {
+  background-color: #fdf7dd;
+  margin-top: 19px;
+}
+div.promise label {
+  color: #000;
+    margin-right: 12px;
+    padding: 10px;
+}
+div.promise input {
+  margin-top: 12px;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #cccccc;
+  background-color: #cccccc!important;
+  color: #666666!important;
+}

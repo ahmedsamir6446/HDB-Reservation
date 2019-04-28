@@ -1,0 +1,29 @@
+section .nav-pills {
+  display: inline-block;
+}
+.mb-60 {
+  margin-bottom: 60px !important;
+}
+.nav>li {
+  position: relative;
+}
+section .nav-pills>li>a {
+  padding: 6px 15px;
+  margin-bottom: 6px;
+}
+section .nav-pills>li>a, section .nav-pills>li.active>a:hover, section .nav-pills>li.active>a {
+  color: #111;
+}
+img.calender {
+  width: 4%;
+    margin-left: 14px;
+}
+.open > .dropdown-toggle.btn-primary, .show > .btn-primary.dropdown-toggle, .btn-primary, .btn-primary:active, .btn-primary:focus, .btn-primary:hover.pagination > .active > a, .pagination > .active > a:hover {
+  border-color: rgb(138, 185, 51);
+}
+h3, .h3 {
+  font-size: 1.45rem;
+}
+h4, .h4 {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,157 @@
+<app-header [auth]="true"></app-header>
+<div class="wrapper">
+  <div class="container">
+    <div class="text-center">
+      <img src="../../assets/img/step3.jpg" alt="">
+    </div>
+    <section class="stepA">
+      <div class="row m-0">
+        <div class="col-6">
+          <h3 class="font-16">الرقم القومي</h3>
+          <h4 class="cell-detail h-40p">{{natId}}</h4>
+          <h3 class="font-16">تاريخ الميلاد</h3>
+          <h4 class="cell-detail h-40p">- - -</h4>
+        </div>
+        <div class="col-6">
+          <h3 class="font-16">اسم المتقدم طبقا للرقم القومي</h3>
+          <h4 class="cell-detail h-40p">{{name}}</h4>
+          <h3 class="font-16">الرقم المطبوع اسفل الصورة بالرقم القومي</h3>
+          <h4 class="cell-detail h-40p">{{noPrintedBelowImgInID}}</h4>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="stepB">
+      <h4 class="green-bg white py-3 pl-2"> بيانات سداد جدية الحجز و طريقة السداد</h4>
+      <div class="row mt-3 mx-0">
+
+        <div class="col-6">
+          <h3 class="font-16">مبلغ جدية الحجز</h3>
+          <h4 class="cell-detail h-40p">{{resAmount}}</h4>
+
+          <h3 class="font-16">تاريخ ايصال السداد</h3>
+          <h4 class="cell-detail h-40p">{{payDate}}</h4>
+
+          <h3 class="font-16">صورة مستند السداد</h3>
+          <h4 class="cell-detail h-40p">File.jpg</h4>
+
+        </div>
+        <div class="col-6">
+
+          <h3 class="font-16">طريقةالسداد</h3>
+          <h4 class="cell-detail h-40p">{{payWayOption}}</h4>
+
+          <h3 class="font-16">رقم مستند السداد</h3>
+          <h4 class="cell-detail h-40p">{{resNum}}</h4>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="stepB">
+      <h4 class="green-bg white py-3 pl-2"> بيانات شخصيه</h4>
+      <div class="row mt-3 mx-0">
+        <div class="col-6">
+          <h3 class="font-16">بلد الجنسيه </h3>
+          <h4 class="cell-detail h-40p">مصر</h4>
+
+          <h3 class="font-16 mt-4">رقم التليفون </h3>
+          <h4 class="cell-detail h-40p">{{phoneNo}}</h4>
+
+          <h3 class="font-16 mt-4">محل الاقامه </h3>
+          <h4 class="cell-detail h-40p">مصر</h4>
+
+          <h3 class="font-16 mt-4">العنوان </h3>
+          <h4 class="cell-detail h-40p" style="line-height: 21px;">{{address}}</h4>
+
+          <h3 class="font-16 mt-4">اسم الزوج/الزوجه طبقا للرقم القومي </h3>
+          <h4 class="cell-detail h-40p">{{partnerName}}</h4>
+
+          <h3 class="font-16 mt-4">صورة الرقم القومي </h3>
+          <h4 class="cell-detail h-40p">file.jpg </h4>
+        </div>
+        <div class="col-6">
+          <h3 class="font-16">رقم المحمول </h3>
+          <h4 class="cell-detail h-40p">{{phoneNo}}</h4>
+
+          <h3 class="font-16 mt-4">عنوان البريد الالكتروني </h3>
+          <h4 class="cell-detail h-40p">{{mail}}</h4>
+
+          <h3 class="font-16 mt-4">المحافظة </h3>
+          <h4 class="cell-detail h-40p">الشرقيه</h4>
+
+          <h3 class="font-16 mt-4">الحاله الاجتماعيه</h3>
+          <h4 class="cell-detail h-40p">{{socialStuts}}</h4>
+
+          <h3 class="font-16 mt-4">الرقم القومي للزوج / الزوجه </h3>
+          <h4 class="cell-detail h-40p">{{partnerId}}</h4>
+
+          <h3 class="font-16 mt-4">صورة الرقم القومي للزوج / الزوجه</h3>
+          <h4 class="cell-detail h-40p">File.jpg</h4>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="stepB">
+        <h4 class="green-bg white py-3 pl-2"> بيانات الوحده السكنيه</h4>
+        <div class="row mt-3 mx-0">
+          <div class="col-6">
+            <h3 class="font-16">المحافظه </h3>
+            <h4 class="cell-detail h-40p">مصر</h4>
+
+            <h3 class="font-16 mt-4">المنطقه </h3>
+            <h4 class="cell-detail h-40p">{{reg}}</h4>
+
+            <h3 class="font-16 mt-4">المجاوره </h3>
+            <h4 class="cell-detail h-40p">{{adj}}</h4>
+
+            <h3 class="font-16 mt-4">رقم العماره  </h3>
+            <h4 class="cell-detail h-40p">???</h4>
+
+            <h3 class="font-16 mt-4">مساحة الوحده  </h3>
+            <h4 class="cell-detail h-40p">{{area}}</h4>
+
+            <h3 class="font-16 mt-4">رقم الدور </h3>
+            <h4 class="cell-detail h-40p">??? </h4>
+          </div>
+          <div class="col-6">
+            <h3 class="font-16">المدينه </h3>
+            <h4 class="cell-detail h-40p">{{city}}</h4>
+
+            <h3 class="font-16 mt-4">الحي </h3>
+            <h4 class="cell-detail h-40p">{{neih}}</h4>
+
+            <h3 class="font-16 mt-4">نوع الوحده</h3>
+            <h4 class="cell-detail h-40p">???</h4>
+
+            <h3 class="font-16 mt-4">رقم الوحده السكنيه</h3>
+            <h4 class="cell-detail h-40p">???</h4>
+
+            <h3 class="font-16 mt-4">نموذج الوحده  </h3>
+            <h4 class="cell-detail h-40p">???</h4>
+
+            <h3 class="font-16 mt-4">نوع الدور</h3>
+            <h4 class="cell-detail h-40p">???</h4>
+          </div>
+
+        </div>
+      </section>
+      <div class="promise custom-control custom-checkbox">
+          <input type="checkbox"  id="customCheck1" [(ngModel)]="checkboxValue"
+           (change)="toggleEditable()">
+          <label class="custom-control-label" for="customCheck1">أقر بصحة البيانات و المستندات
+             المقدمه مني و اتحمل كامل المسؤليه المدنيه والجنائيه
+             و في حالة مخالفة هذه البيانات او المستندات للحقيقه  يعتبر
+              الطلب لاغي ولا يعتد به دون ادني مسؤليه علي الجهة الاداريه او بنك التعميد و الاسكان</label>
+      </div>
+      <div class="text-center">
+          <button (click)="step3Next()" [disabled]="!checked" style="background-color: #5596da" class="btn white nextbtn">ارسال الطلب</button>
+          <button style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
+        </div>
+
+  </div>
+
+</div>

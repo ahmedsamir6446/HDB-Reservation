@@ -1,0 +1,142 @@
+<app-header [auth]="true"></app-header>
+<div class="wrapper">
+  <div class="container">
+    <div class="text-center">
+  <img src="../../assets/img/step1.jpg" alt="">
+</div>
+    <section class="stepA">
+        <div class="row m-0">
+          <div class="col-6">
+            <h3 class="font-16">الرقم القومي</h3>
+            <h4 class="cell-detail h-40p">{{natId}}</h4>
+            <div class="form-group mt-3">
+                <label for="app-name">اسم المتقدم طبقا للرقم القومي*</label>
+                <input type="text"
+                name="appName"
+                 class="form-control h-40p" id="app-name" placeholder="{{name}}">
+              </div>
+              <div class="form-group mt-3">
+                  <label for="app-no">الرقم المطبوع اسفل الصورة بالرقم القومي*</label>
+                  <input type="text" class="form-control h-40p" id="app-no" placeholder="{{noPrintedBelowImgInID}}">
+                </div>
+          </div>
+          <div class="col-6">
+              <h3 class="font-16">تاريخ الميلاد</h3>
+              <h4 class="cell-detail h-40p">- - -</h4>
+              <div class="form-group mt-3">
+                  <label for="nIDImg">ارفاق صورة الرقم القومي</label>
+                  <input type="file" class="form-control-file" id="nIDImg">
+                  <p style="font-size: 12px;" class="m-0">برجاء ارفاق صورة وجهي البطاقه في نفس الملف</p>
+                  <p style="font-size: 12px;" class="m-0">يسمح فقط بالملفات من نوع Jpg, Jpeg, pdf بحد اقصي ٣ ميجا بايت</p>
+                </div>
+                <img src="../../assets/img/nID.jpg" alt="">
+          </div>
+
+        </div>
+      </section>
+
+      <section class="stepB">
+          <h4 class="green-bg white py-3 pl-2"> بيانات سداد جدية الحجز و طريقة السداد</h4>
+          <div class="row mt-3 mx-0">
+
+            <div class="col-6">
+              <div class="form-group mt-3">
+                  <label for="resAmount">مبلغ جدية الحجز*</label>
+                  <input type="text"
+                  name="resAmount"
+                [(ngModel)]="resAmount"
+                (ngModelChange)="getResAmount(resAmount)"
+                  class="form-control h-40p" required placeholder="">
+                  <small>  يرجي التاكد انه نفس القيمه المذكوره في صورة مستند السداد</small>
+                  <br>
+                  <small *ngIf="!resAmountTrue" class="text-danger">م ارقام بحد اقصى 20 </small>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="res-date">تاريخ ايصال السداد *</label>
+
+                    <input class="form-control h-40p" placeholder=""
+                      name="dp" [(ngModel)]="model"
+                      (ngModelChange)="getdp($event)"
+                      (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker">
+
+
+                  </div>
+                  <div class="form-group mt-3">
+                      <label for="nIDImg">ارفاق صورة مستند السداد</label>
+                      <input type="file" class="form-control-file" id="nIDImg">
+                      <p style="font-size: 12px;" class="m-0">يسمح فقط بالملفات من نوع Jpg, Jpeg, pdf بحد اقصي ٣ ميجا بايت</p>
+                    </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group mt-3">
+                    <label for="pay-way">طريقةالسداد</label>
+                    <select [(ngModel)]="payWayOption"
+                    (change)="fireSelection()" name="first" class="form-control" id="pay-way">
+                      <option *ngFor="let payWay of payWayList">{{payWay.name}}</option>
+                    </select>
+                  </div>
+                <div class="form-group mt-3">
+                    <label for="res-num">رقم مستند السداد *</label>
+                    <input type="text"
+                    name="resNum"
+                [(ngModel)]="resNum"
+                (ngModelChange)="getResNum(resNum)"
+                    class="form-control h-40p" id="res-num" placeholder="">
+                    <small>  يرجي عدم ادخال رموز ما عدا '/' و '-'</small>
+                  </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="stepB">
+            <h4 class="green-bg white py-3 pl-2"> بيانات شخصيه</h4>
+            <div class="row mt-3 mx-0">
+              <div class="col-6">
+                  <h3 class="font-16">بلد الجنسيه </h3>
+                  <h4 class="cell-detail h-40p">مصر</h4>
+
+                  <h3 class="font-16 mt-4">رقم التليفون  </h3>
+                  <h4 class="cell-detail h-40p">{{phoneNo}}</h4>
+
+                  <h3 class="font-16 mt-4">محل الاقامه </h3>
+                  <h4 class="cell-detail h-40p">مصر</h4>
+
+                  <h3 class="font-16 mt-4">العنوان  </h3>
+                  <h4 class="cell-detail h-40p" style="line-height: 21px;">{{address}}</h4>
+
+                  <h3 class="font-16 mt-4">اسم الزوج/الزوجه طبقا للرقم القومي  </h3>
+                  <h4 class="cell-detail h-40p">{{partnerName}}</h4>
+
+                  <h3 class="font-16 mt-4">صورة الرقم القومي </h3>
+                  <h4 class="cell-detail h-40p">file.jpg </h4>
+              </div>
+              <div class="col-6">
+                  <h3 class="font-16">رقم المحمول   </h3>
+                  <h4 class="cell-detail h-40p">{{phoneNo}}</h4>
+
+                  <h3 class="font-16 mt-4">عنوان البريد الالكتروني </h3>
+                  <h4 class="cell-detail h-40p">{{mail}}</h4>
+
+                  <h3 class="font-16 mt-4">المحافظة </h3>
+                  <h4 class="cell-detail h-40p">الشرقيه</h4>
+
+                  <h3 class="font-16 mt-4">الحاله الاجتماعيه</h3>
+                  <h4 class="cell-detail h-40p">{{socialStuts}}</h4>
+
+                  <h3 class="font-16 mt-4">الرقم القومي للزوج / الزوجه </h3>
+                  <h4 class="cell-detail h-40p">{{partnerId}}</h4>
+
+                  <h3 class="font-16 mt-4">صورة الرقم القومي للزوج / الزوجه</h3>
+                  <h4 class="cell-detail h-40p">&nbsp;</h4>
+              </div>
+
+            </div>
+          </section>
+
+          <button (click)="step1Next()" [disabled]="!payWayOption || !model || !resAmount || !resNum || !resAmountTrue" class="btn green-bg white nextbtn">التالي</button>
+
+      </div>
+
+    </div>
+

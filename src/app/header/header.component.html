@@ -1,0 +1,66 @@
+<div id="wrapper">
+  <div id="header" class="navbar-toggleable-md sticky clearfix">
+    <div id="topNav">
+      <div class="container">
+        <a class="logo float-left col-lg-5 col-md-6 col-sm-4 col-xs-9">
+          <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
+          <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
+        </a>
+        <a class="logo float-right col-lg-5 col-md-6 col-sm-4 col-xs-9" >
+          <img class="img-fluid" src="../../assets/img/UrbanCommunitiesAuthority.png" alt="" style="float: left;"  />
+          <img class="img-fluid" src="../../assets/img/UrbanCommunitiesAuthority.png" alt="" style="float: left;" />
+        </a>
+
+        <div class="navbar-collapse collapse float-left nav-main-collapse submenu-dark">
+          <nav class="nav-main">
+            <ul *ngIf="!auth" id="topMain" class="nav nav-pills nav-main">
+              <li class="active">
+                <a class="fs-15" >الرئيسية</a>
+              </li>
+              <li class="active">
+                <a class="fs-15" >المشاريع</a>
+              </li>
+              <li class="active">
+                <a class="fs-15">الأسئلة الشائعة</a>
+              </li>
+              <li class="active">
+                <a class="fs-15">عن الموقع</a>
+              </li>
+
+              <li class="active">
+                <a class="fs-15">تسجيل مستخدم جديد</a>
+              </li>
+              <li class="active">
+                <a class="fs-15" routerLink="/login" >دخول مستخدم حالي</a>
+              </li>
+            </ul>
+            <ul *ngIf="auth" id="topMain" class="nav nav-pills nav-main">
+              <li class="active">
+                <a class="fs-15" >الرئيسية</a>
+              </li>
+              <li class="active">
+                <a class="fs-15" >المشاريع</a>
+              </li>
+              <li class="active">
+                <a class="fs-15">الإستعلام</a>
+              </li>
+              <li class="active">
+                <a class="fs-15">استرداد مقدم الدفع</a>
+              </li>
+
+              <li class="active">
+                <a class="fs-15">الاسئله الشائعه</a>
+              </li>
+              <li class="active">
+                <a class="fs-15">عن الموقع</a>
+              </li>
+              <li class="active">
+                <a class="fs-15" (click)="logOut()" >تسجيل الخروج</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

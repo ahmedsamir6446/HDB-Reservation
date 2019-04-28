@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "assets/css/essentials.min.css"; */
+@import "assets/css/layout.min.css";
+@import "assets/css/green.min.css";
+@import "assets/css/bootstrap-rtl-merged.min.css";
+@import "~bootstrap-with-rtl/dist/css/bootstrap.css";
+@import "~bootstrap-with-rtl/dist/css/bootstrap.rtl.css";
+
+/* @import "assets/css/layout-RTL.min.css"; */
+@import "assets/css/header-1.css";
+@import "assets/css/custom.css";
+body {
+  color: #666;
+  background-color: #fff;
+  font-family: 'Cairo',Helvetica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+.green {color: #8ab933!important;}
+.green-border {border-color: #8ab933!important;}
+.white {color: #fff!important;}
+.green-bg {background-color: #8ab933!important;}
+.grey-bg {background-color: rgba(0, 0, 0, 0.1) !important;}
+a:hover {text-decoration: none;}
+.pointer {cursor: pointer;}
+.lighter {font-weight: lighter!important;}
+.h-40p {height: 40px;}
+.font-16 {font-size: 16px;}
+.font-15 {font-size: 15px;}
+.cell-detail {
+  line-height: 40px;
+    padding-right: 20px;
+    border-radius: 0.25rem;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}

@@ -1,0 +1,14 @@
+button.nextbtn {
+  margin-bottom: 110px;
+    margin-top: 20px;
+    padding: 6px 25px;
+}
+div.w-100 {
+  background-color: rgba(0, 128, 0, 0.2);
+  color: green;
+  padding: 24px;
+  margin-top: 21px;
+  border-right: 4px solid rgba(128, 128, 128, 0.3);
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
