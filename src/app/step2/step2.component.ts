@@ -71,8 +71,7 @@ export class Step2Component implements OnInit {
     {area : '4479', vlaue : 41},
   ]; // Areas
   adjList = [
-    {adj : '', value : 1},
-    {adj : '', value : 2},
+    {adj : 'لا يوجد', value : 1},
   ];
   regList = [
     {reg : '14035', value : 1},
