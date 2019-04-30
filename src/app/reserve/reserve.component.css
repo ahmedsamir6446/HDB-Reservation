@@ -7,7 +7,7 @@ div.heading-title.heading-border {
 }
 div.heading-title {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 110px;
 }
 div.heading-title h2 {
   padding-right: 0px !important;
@@ -30,4 +30,11 @@ button.extract {
   background-color: #6c6d70;
     color: #FFF !important;
     margin-left: 3px;
+}
+div.reserve-wrapper {
+  background-color: rgba(0,0,0,0.05);
+    padding: 6px;
+    border: rgba(0,0,0,0.1) 1px solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
