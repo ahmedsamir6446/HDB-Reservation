@@ -44,6 +44,11 @@ export class Step1Component implements OnInit {
     this.getBirthday(this.natId);
     localStorage.setItem('birthdayDate', this.birthdayDate);
   }
+  onPaymentMethodsChanges(ev) {
+    console.log(ev);
+
+  }
+
 
   getResNum(resNum) {
     this.resNum = resNum;

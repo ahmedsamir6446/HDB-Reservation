@@ -14,6 +14,7 @@ import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RulesComponent } from './rules/rules.component';
 
 
 const appRoutes: Routes = [
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'reserve', component: ReserveComponent},
+  { path: 'rules', component: RulesComponent},
   { path: 'step1', component: Step1Component},
   { path: 'step2', component: Step2Component},
   { path: 'step3', component: Step3Component},
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     Step2Component,
     Step3Component,
     Step4Component,
+    RulesComponent,
 
   ],
   imports: [
