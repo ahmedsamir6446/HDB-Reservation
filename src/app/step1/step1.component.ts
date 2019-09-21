@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.css']
 })
-export class Step1Component implements OnInit {
+export class Step1Component implements OnInit, AfterViewInit {
   resNum;
   resAmount;
   resAmountTrue = true;
   payDate;
   payWayOption: string;
   birthdayDate;
-  payWayList = [
-    { name: 'Swift', value: 1 },
-    { name: 'ACH', value: 2 },
-    { name: 'تحویل داخلى بنك التعمیر والاسكان', value: 3 }
-  ];
   model: any;
+  public messageForm: FormGroup;
 
   natId = localStorage.getItem('natID');
   phoneNo = localStorage.getItem('phoneNo');
@@ -29,6 +26,12 @@ export class Step1Component implements OnInit {
   partnerId = localStorage.getItem('partnerId');
   noPrintedBelowImgInID = localStorage.getItem('noPrintedBelowImgInID');
   name = localStorage.getItem('name');
+  public payment: string;
+  @ViewChild('paymentMethods') paymentMethods: ElementRef;
+  @ViewChild('paymentNo') paymentNo: ElementRef;
+  @ViewChild('bankBranchName') bankBranchName: ElementRef;
+  @ViewChild('paymentDate') paymentDate: ElementRef;
+  // @ViewChild('paymentMethods') paymentMethods: ElementRef;
 
 
   getBirthday (natId: string) {
@@ -37,30 +40,50 @@ export class Step1Component implements OnInit {
   }
 
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    protected changeRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.getBirthday(this.natId);
+    console.log(this.natId);
+
     localStorage.setItem('birthdayDate', this.birthdayDate);
   }
-  onPaymentMethodsChanges(ev) {
-    console.log(ev);
-
+  ngAfterViewInit() {
+    const xxx = document.getElementById('paymentMethods');
+    console.log(xxx);
   }
-
-
-  getResNum(resNum) {
-    this.resNum = resNum;
-    localStorage.setItem ('resNum', resNum);
-  }
-  getResAmount(resAmount) {
-    this.resAmount = resAmount;
-    this.resAmountTrue = (!isNaN(resAmount)) && (resAmount.toString().length <= 20);
-    if (this.resAmountTrue) {
-     localStorage.setItem('resAmount', resAmount);
+  onPaymentMethodsChanges(value) {
+    if (value === '1') {
+      this.payment = 'intern';
+      this.changeRef.detectChanges();
+    } else if (value === '2') {
+      this.payment = 'extern';
+      this.changeRef.detectChanges();
+    } else if (value === '3') {
+      this.payment = 'hdb';
+      this.changeRef.detectChanges();
     }
+    this.changeRef.markForCheck();
+    this.changeRef.detectChanges();
+    console.log(value);
+    console.log(this.payment);
+
   }
+
+
+  // getResNum(resNum) {
+  //   this.resNum = resNum;
+  //   localStorage.setItem ('resNum', resNum);
+  // }
+  // getResAmount(resAmount) {
+  //   this.resAmount = resAmount;
+  //   this.resAmountTrue = (!isNaN(resAmount)) && (resAmount.toString().length <= 20);
+  //   if (this.resAmountTrue) {
+  //    localStorage.setItem('resAmount', resAmount);
+  //   }
+  // }
   step1Next() {
     this.router.navigateByUrl('/step2');
   }
@@ -68,7 +91,7 @@ export class Step1Component implements OnInit {
     this.payDate = event.year + '-' + event.month + '-' + event.day;
     localStorage.setItem('payDate', this.payDate);
   }
-  fireSelection() {
-    localStorage.setItem('payWayOption', this.payWayOption);
-  }
+  // fireSelection() {
+  //   localStorage.setItem('payWayOption', this.payWayOption);
+  // }
 }

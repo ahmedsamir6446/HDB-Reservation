@@ -15,6 +15,7 @@ import { Step4Component } from './step4/step4.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RulesComponent } from './rules/rules.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     BrowserModule,
     RecaptchaModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule
   ],

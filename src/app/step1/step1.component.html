@@ -17,24 +17,18 @@
           <h3 class="font-16">الرقم القومي</h3>
           <h4 class="cell-detail h-40p">{{natId}}</h4>
           <div class="form-group mt-3">
-            <label for="app-name">اسم المتقدم طبقا للرقم القومي*</label>
-            <input type="text" name="appName" class="form-control h-40p" id="app-name" placeholder="{{name}}">
+            <h3 class="font-16">اسم المتقدم طبقا للرقم القومي*</h3>
+            <h4 class="cell-detail h-40p">{{natId}}</h4>
           </div>
-          <div class="form-group mt-3">
-            <label for="app-no">الرقم المطبوع اسفل الصورة بالرقم القومي*</label>
-            <input type="text" class="form-control h-40p" id="app-no" placeholder="{{noPrintedBelowImgInID}}">
-          </div>
+
         </div>
         <div class="col-6">
           <h3 class="font-16">تاريخ الميلاد</h3>
           <h4 class="cell-detail h-40p">{{birthdayDate}}</h4>
           <div class="form-group mt-3">
-            <label for="nIDImg">ارفاق صورة الرقم القومي</label>
-            <input type="file" class="form-control-file" id="nIDImg">
-            <p style="font-size: 12px;" class="m-0">برجاء ارفاق صورة وجهي البطاقه في نفس الملف</p>
-            <p style="font-size: 12px;" class="m-0">يسمح فقط بالملفات من نوع Jpg, Jpeg, pdf بحد اقصي ٣ ميجا بايت</p>
+            <h3 class="font-16">الرقم المطبوع اسفل الصورة بالرقم القومي</h3>
+            <h4 class="cell-detail h-40p">{{noPrintedBelowImgInID}}"</h4>
           </div>
-          <img src="../../assets/img/nID.jpg" alt="">
         </div>
 
       </div>
@@ -42,13 +36,13 @@
 
     <section class="stepB">
       <h4 class="green-bg white py-3 pl-2">بيانات سداد جدية الحجز و طريقة السداد - البيانات اختياري</h4>
-      <form [formGroup]="step1Form">
+      <form>
         <div class="row mt-3 mx-0">
 
           <div class="col-6">
             <div class="form-group mt-3">
               <label for="paymentMethods">طريقةالسداد</label>
-              <select id="paymentMethods" name="paymentMethods" class="form-control" (change)="onPaymentMethodsChanges($event)" formControlName="paymentMethods">
+              <select #paymentMethods id="paymentMethods" name="paymentMethods" class="form-control" (change)="onPaymentMethodsChanges($event.target.value)" >
                 <option value="0">برجاء الاختيار</option>
                 <option value="1">تحويل داخلي ACH/Swift</option>
                 <option value="2">تحويل خارجي</option>
@@ -58,13 +52,13 @@
 
             <div class="form-group mt-3">
               <label for="paymentNo">رقم مستند السداد </label>
-              <input id="paymentNo" type="text" name="resNum" class="form-control h-40p" placeholder="" formControlName="paymentNo">
+              <input #paymentNo id="paymentNo" type="text" name="resNum" class="form-control h-40p" placeholder="" >
               <small>  يرجي عدم ادخال رموز ما عدا '/' و '-'</small>
             </div>
 
             <div class="form-group mt-3">
               <label for="bankBranchName">الفرع</label>
-              <input id="bankBranchName" type="text" name="resNum" class="form-control h-40p" placeholder="" formControlName="bankBranchName">
+              <input #bankBranchName id="bankBranchName" type="text" name="resNum" class="form-control h-40p" placeholder="" >
             </div>
 
           </div>
@@ -72,18 +66,18 @@
           <div class="col-6">
             <div class="form-group mt-3">
               <label for="paymentDate">تاريخ ايصال السداد </label>
-              <input id="paymentDate" formControlName="paymentDate" class="form-control h-40p" placeholder="" name="dp" [(ngModel)]="model"
-                (ngModelChange)="getdp($event)" (click)="d.toggle()" ngbDatepicker #d="ngbDatepicker">
+              <input #paymentDate id="paymentDate" class="form-control h-40p" placeholder="" name="dp" (click)="d.toggle()"
+                ngbDatepicker #d="ngbDatepicker">
             </div>
 
             <div class="form-group mt-3">
               <label for="bankName">البنك</label>
-              <select *ngIf="payment === 'intern'" name="first" class="form-control" id="bankName" formControlName="bankName">
-                <option *ngFor="let payWay of payWayList">{{payWay.name}}</option>
-              </select>
-              <select *ngIf="payment === 'extern'" name="first" class="form-control" id="bankName" formControlName="bankName">
-                <option value="0">برجاء الاختيار</option>
-                <option value="1">بنك خارج مصر</option>
+              <select *ngIf="payment === 'intern' || payment === 'extern' || !payment" name="first" class="form-control" id="bankName">
+
+
+                <option value="0" >برجاء الاختيار</option>
+                <option value="1" *ngIf= "payment !== 'intern'">بنك خارج مصر</option>
+                <option value="2" *ngIf= "payment !== 'extern'" >banks lists</option>
               </select>
               <h4 *ngIf="payment === 'hdb'">بنك التعمير و الاسكان</h4>
             </div>
