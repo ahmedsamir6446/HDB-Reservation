@@ -58,9 +58,13 @@ export class Step2Component implements OnInit {
   fireGovSelection(event) {
     // this.setDefault();
     this.clearAll();
-    const govName = event;
+    const govName = event.target.options[event.target.options.selectedIndex].text;
     this.cityList = this.data.cityList;
+    console.log(govName);
+
     const SameGovLsit = this.govList.filter(item => item.gov === govName);
+    console.log(SameGovLsit);
+
     const govId = SameGovLsit[0].govId;
 
     const cities = this.cityList.filter(item => item.govId === govId);
@@ -88,7 +92,7 @@ export class Step2Component implements OnInit {
   }
 
   fireCitySelection(event) {
-    const cityName = event;
+    const cityName = event.target.options[event.target.options.selectedIndex].text;
 
     this.regionList = this.data.regionList;
     const SameCityLsit = this.cityList.filter(item => item.city === cityName);
@@ -116,7 +120,7 @@ export class Step2Component implements OnInit {
     // }
   }
   fireRegionSelection(event) {
-    const regionName = event;
+    const regionName = event.target.options[event.target.options.selectedIndex].text;
     this.districtList = this.data.districtList;
     console.log(regionName);
 
@@ -144,7 +148,7 @@ export class Step2Component implements OnInit {
     // }
   }
   fireDistrictSelection(event) {
-    const districtName = event;
+    const districtName = event.target.options[event.target.options.selectedIndex].text;
     this.subDistrictList = this.data.subDistrictsList;
     const SameDistrictLsit = this.districtList.filter(item => item.district === districtName);
 
@@ -168,7 +172,7 @@ export class Step2Component implements OnInit {
     // }
   }
   fireSubDistrictSelection(event) {
-    const subDistrictName = event;
+    const subDistrictName = event.target.options[event.target.options.selectedIndex].text;
     this.landList = this.data.landList;
     const SameSubDistrictLsit = this.subDistrictList.filter(item => item.subDistrict === subDistrictName);
 
