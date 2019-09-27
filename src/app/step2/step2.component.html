@@ -18,7 +18,7 @@
           <div class="form-group mt-3">
             <label for="governorates">المحافظه *</label>
             <select (change)="fireGovSelection($event.target.selectedIndex)" class="form-control" id="governorates" name="unitGovID">
-              <option *ngFor="let gov of govList" [value]="gov.value">{{gov.gov}}</option>
+              <option *ngFor="let gov of govList">{{gov.gov}}</option>
             </select>
           </div>
 

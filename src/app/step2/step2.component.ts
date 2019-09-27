@@ -42,6 +42,7 @@ export class Step2Component implements OnInit {
   step2Next() {
     this.router.navigateByUrl('/step3');
   }
+
   setDefault() {
     this.subDistrictListDisabled = false;
     this.regionListDisabled = false;
@@ -55,6 +56,7 @@ export class Step2Component implements OnInit {
     this.landList = this.data.landList;
     this.regionList = this.data.regionList;
   }
+
   fireGovSelection(event) {
     // this.setDefault();
     const govId = +event;
@@ -76,7 +78,10 @@ export class Step2Component implements OnInit {
     }
   }
   fireCitySelection(event) {
+    // this.cityList = this.data.cityList;
     const cityId = +event;
+    console.log(event);
+
     this.regionList = this.data.regionList;
     const regions = this.regionList.filter(item => item.cityId === cityId);
     console.log(regions);
@@ -90,6 +95,8 @@ export class Step2Component implements OnInit {
       const returnedRegionId = this.regionList[0].regionId;
       this.fireRegionSelection(returnedRegionId);
       this.changeRef.detectChanges();
+    } else {
+      this.fireRegionSelection(this.regionList[0].regionId);
     }
   }
   fireRegionSelection(event) {
@@ -105,6 +112,8 @@ export class Step2Component implements OnInit {
       const returnedDistrictId = this.districtList[0].districtId;
       this.fireDistrictSelection(returnedDistrictId);
       this.changeRef.detectChanges();
+    } else {
+      this.fireDistrictSelection(this.districtList[0].districtId);
     }
   }
   fireDistrictSelection(event) {
@@ -119,6 +128,8 @@ export class Step2Component implements OnInit {
       const returnedSubDistrictId = this.subDistrictList[0].subDistrictId;
       this.fireSubDistrictSelection(returnedSubDistrictId);
       this.changeRef.detectChanges();
+    } else {
+      this.fireSubDistrictSelection(this.subDistrictList[0].subDistrictId);
     }
   }
   fireSubDistrictSelection(event) {
