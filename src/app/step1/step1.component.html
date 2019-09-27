@@ -73,8 +73,6 @@
             <div class="form-group mt-3">
               <label for="bankName">البنك</label>
               <select *ngIf="payment === 'intern' || payment === 'extern' || !payment" name="first" class="form-control" id="bankName">
-
-
                 <option value="0" >برجاء الاختيار</option>
                 <option value="1" *ngIf= "payment !== 'intern'">بنك خارج مصر</option>
                 <option value="2" *ngIf= "payment !== 'extern'" >banks lists</option>
@@ -138,7 +136,7 @@
       </div>
     </section>
 
-    <button (click)="step1Next()" [disabled]="!payWayOption || !model || !resAmount || !resNum || !resAmountTrue" class="btn green-bg white nextbtn">التالي</button>
+    <button (click)="step1Next()" class="btn green-bg white nextbtn">التالي</button>
 
   </div>
 

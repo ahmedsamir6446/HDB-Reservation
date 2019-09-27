@@ -16,45 +16,45 @@
       <div class="row mt-3 mx-0">
         <div class="col-6">
           <div class="form-group mt-3">
-            <label for="pay-way">المحافظه *</label>
-            <select (change)="fireGovernoratesSelection($event.target.value)" class="form-control" id="governorates" name="unitGovID">
+            <label for="governorates">المحافظه *</label>
+            <select (change)="fireGovSelection($event.target.selectedIndex)" class="form-control" id="governorates" name="unitGovID">
               <option *ngFor="let gov of govList" [value]="gov.value">{{gov.gov}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
-            <label for="pay-way">المنطقه *</label>
-            <select [(ngModel)]="reg" (change)="fireSelection()" name="first" class="form-control" id="pay-way">
-              <option *ngFor="let reg of regList">{{reg.reg}}</option>
+            <label for="regions">المنطقه *</label>
+            <select [disabled]= "regionListDisabled" (change)="fireRegionSelection($event.target.selectedIndex)" name="first" class="form-control" id="regions">
+              <option *ngFor="let region of regionList">{{region.region}}</option>
             </select>
           </div>
           <div class="form-group mt-3">
-            <label for="pay-way">المجاوره *</label>
-            <select [(ngModel)]="adj" (change)="fireSelection()" name="first" class="form-control" id="pay-way">
-              <option *ngFor="let adj of adjList">{{adj.adj}}</option>
+            <label for="subDistricts">المجاوره *</label>
+            <select [disabled]= "subDistrictListDisabled" (change)="fireSubDistrictSelection($event.target.selectedIndex)" name="first" class="form-control" id="subDistricts">
+              <option *ngFor="let subDistrict of subDistrictList">{{subDistrict.subDistrict}}</option>
             </select>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group mt-3">
-            <label for="pay-way">المدينه *</label>
-            <select (change)="fireCitySelection($event.target.value)" name="first" class="form-control" id="cities">
+            <label for="cities">المدينه *</label>
+            <select [disabled]= "cityListDisabled" (change)="fireCitySelection($event.target.selectedIndex)" name="first" class="form-control" id="cities">
               <option *ngFor="let city of cityList">{{city.city}}</option>
             </select>
           </div>
 
 
           <div class="form-group mt-3">
-            <label for="pay-way">الحي *</label>
-            <select [(ngModel)]="neih" (change)="fireSelection()" name="first" class="form-control" id="pay-way">
-              <option *ngFor="let neih of neihList">{{neih.neih}}</option>
+            <label for="districts">الحي *</label>
+            <select [disabled]= "districtListDisabled" (change)="fireDistrictSelection($event.target.selectedIndex)" name="first" class="form-control" id="districts">
+              <option *ngFor="let district of districtList">{{district.district}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
-            <label for="pay-way">رقم القطعه *</label>
-            <select [(ngModel)]="spaceNo" (change)="fireSelection()" name="first" class="form-control" id="pay-way">
-              <option *ngFor="let spaceNo of spaceNoList">{{spaceNo.spaceNo}}</option>
+            <label for="lands">رقم القطعه *</label>
+            <select [disabled]= "landListDisabled" name="first" class="form-control" id="lands">
+              <option *ngFor="let land of landList">{{land.land}}</option>
             </select>
           </div>
         </div>
