@@ -18,7 +18,7 @@
           <div class="form-group mt-3">
             <label for="governorates">المحافظه *</label>
             <select (change)="fireGovSelection($event)" class="form-control" id="governorates" name="unitGovID">
-                <option value="" selected>برجاء الاختيار</option>
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let gov of govList" value="gov.value">{{gov.gov}}</option>
             </select>
           </div>
@@ -26,23 +26,27 @@
           <div class="form-group mt-3">
             <label for="regions">المنطقه *</label>
             <select (change)="fireRegionSelection($event)" name="first" class="form-control" id="regions">
-                <option value="" selected>برجاء الاختيار</option>
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let region of regionList">{{region.region}}</option>
             </select>
           </div>
           <div class="form-group mt-3">
             <label for="subDistricts">المجاوره *</label>
             <select (change)="fireSubDistrictSelection($event)" name="first" class="form-control" id="subDistricts">
-                <option value="" selected>برجاء الاختيار</option>
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let subDistrict of subDistrictList" value="subDistrict.value">{{subDistrict.subDistrict}}</option>
             </select>
+          </div>
+          <div class="form-group mt-3" *ngIf="showResults">
+            <h3 class="font-16">المساحه</h3>
+            <h4 class="cell-detail h-40p">{{area}}</h4>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="cities">المدينه *</label>
             <select (change)="fireCitySelection($event)" name="first" class="form-control" id="cities">
-                <option value="" selected>برجاء الاختيار</option>
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let city of cityList" value="city.value">{{city.city}}</option>
             </select>
           </div>
@@ -51,17 +55,21 @@
           <div class="form-group mt-3">
             <label for="districts">الحي *</label>
             <select (change)="fireDistrictSelection($event)" name="first" class="form-control" id="districts">
-                <option value="" selected>برجاء الاختيار</option>
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let district of districtList" value="district.value">{{district.district}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
             <label for="lands">رقم القطعه *</label>
-            <select name="first" class="form-control" id="lands">
-                <option value="" selected>برجاء الاختيار</option>
+            <select (change)="fireLandSelection($event)" name="first" class="form-control" id="lands">
+              <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let land of landList" value="land.value">{{land.land}}</option>
             </select>
+          </div>
+          <div class="form-group mt-3" *ngIf="showResults">
+            <h3 class="font-16">نسبة التميز</h3>
+            <h4 class="cell-detail h-40p">{{excellence}}</h4>
           </div>
         </div>
 
@@ -69,7 +77,7 @@
     </section>
     <div class="text-center">
       <button (click)="step2Next()" class="btn green-bg white nextbtn">تاكيد </button>
-      <button  class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
+      <button class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
     </div>
   </div>
 
