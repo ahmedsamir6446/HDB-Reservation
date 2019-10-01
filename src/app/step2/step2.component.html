@@ -19,7 +19,7 @@
             <label for="governorates">المحافظه *</label>
             <select (change)="fireGovSelection($event)" class="form-control" id="governorates" name="unitGovID">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let gov of govList" value="gov.value">{{gov.gov}}</option>
+              <option *ngFor="let gov of govList" [value]="gov.value">{{gov.gov}}</option>
             </select>
           </div>
 
@@ -47,7 +47,7 @@
             <label for="cities">المدينه *</label>
             <select (change)="fireCitySelection($event)" name="first" class="form-control" id="cities">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let city of cityList" value="city.value">{{city.city}}</option>
+              <option *ngFor="let city of cityList" [value]="city.value">{{city.city}}</option>
             </select>
           </div>
 
