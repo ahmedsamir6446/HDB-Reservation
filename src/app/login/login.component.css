@@ -6,7 +6,7 @@
   border-radius: 3px;
 }
 .box-static.box-border-top {
-  border-top: 3px solid #8ab933;
+  border-top: 3px solid #61a844;
 }
 .fs-20 {
   font-size: 20px !important;
@@ -18,7 +18,7 @@ h2{
   margin-bottom: 30px !important;
 }
 .box-static .box-title {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #f7f7f9;
 }
 form label {
   font-weight: normal;

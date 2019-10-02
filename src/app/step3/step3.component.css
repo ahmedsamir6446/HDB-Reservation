@@ -16,7 +16,7 @@ section.stepB {
   padding-right: 20px;
   border-radius: 0.25rem;
   font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #f7f7f9 !important;
 }
 button.nextbtn {
   margin-bottom: 110px;

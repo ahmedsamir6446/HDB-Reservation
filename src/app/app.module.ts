@@ -58,7 +58,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     {provide: NgbDateParserFormatter,
-      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY') }
+      useFactory: () => new NgbDateCustomParserFormatterService('YYYY-MM-DD') }
 ],
   bootstrap: [AppComponent]
 })
