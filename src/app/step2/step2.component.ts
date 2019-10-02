@@ -29,6 +29,7 @@ export class Step2Component implements OnInit {
   subDistrictNameTrimmed;
   landNo;
   showResults = false;
+  cantGo = true;
 
   constructor(public router: Router,
     protected changeRef: ChangeDetectorRef,
@@ -79,6 +80,8 @@ export class Step2Component implements OnInit {
     } else if (state === 'subDistrict') {
       this.landList = [];
     }
+    this.showResults = false;
+    this.cantGo = true;
 
   }
   removeSpaces(item: string) {
@@ -178,8 +181,9 @@ export class Step2Component implements OnInit {
       this.excellence = filteredTable[0].excellence;
       this.showResults = true;
       console.log(filteredTable);
+      this.cantGo = false;
     } else {
-      alert('please take screenshot and send to me then refresh and start over');
+      alert('please take screenshot and send to me then refresh and start over ya 5aled beeeh :)');
     }
     this.changeRef.detectChanges();
   }

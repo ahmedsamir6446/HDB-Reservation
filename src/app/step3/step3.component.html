@@ -1,9 +1,16 @@
 <app-header [auth]="true"></app-header>
 <div class="wrapper">
+    <section class="page-header page-header-xs" id="Reg">
+        <div class="container">
+          <div class="row">
+            <h1>استمارة حجز ارض</h1>
+            <h1>&nbsp;-&nbsp;
+              <span>قطع أراضي الأكثر تمييز</span>
+            </h1>
+          </div>
+        </div>
+      </section>
   <div class="container">
-    <div class="text-center">
-      <img src="../../assets/img/step3.jpg" alt="">
-    </div>
     <section class="stepA">
       <div class="row m-0">
         <div class="col-6">
@@ -150,7 +157,7 @@
               الطلب لاغي ولا يعتد به دون ادني مسؤليه علي الجهة الاداريه او بنك التعميد و الاسكان</label>
       </div>
       <div class="text-center">
-          <button (click)="step3Next()" [disabled]="!checked" style="background-color: #5596da" class="btn white nextbtn">ارسال الطلب</button>
+          <button (click)="step3Next()" [disabled]="!checked" class="btn green-bg white nextbtn">ارسال الطلب</button>
           <button style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
         </div>
 

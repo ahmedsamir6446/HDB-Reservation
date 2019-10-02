@@ -25,16 +25,16 @@
 
           <div class="form-group mt-3">
             <label for="regions">المنطقه *</label>
-            <select (change)="fireRegionSelection($event)" name="first" class="form-control" id="regions">
+            <select (change)="fireRegionSelection($event)" name="unitRegionID" class="form-control" id="regions">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let region of regionList">{{region.region}}</option>
+              <option *ngFor="let region of regionList" [value]="region.value">{{region.region}}</option>
             </select>
           </div>
           <div class="form-group mt-3">
             <label for="subDistricts">المجاوره *</label>
-            <select (change)="fireSubDistrictSelection($event)" name="first" class="form-control" id="subDistricts">
+            <select (change)="fireSubDistrictSelection($event)" name="unitSubDistrictID" class="form-control" id="subDistricts">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let subDistrict of subDistrictList" value="subDistrict.value">{{subDistrict.subDistrict}}</option>
+              <option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict.value">{{subDistrict.subDistrict}}</option>
             </select>
           </div>
           <div class="form-group mt-3" *ngIf="showResults">
@@ -45,7 +45,7 @@
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="cities">المدينه *</label>
-            <select (change)="fireCitySelection($event)" name="first" class="form-control" id="cities">
+            <select (change)="fireCitySelection($event)" name="unitCityID" class="form-control" id="cities">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let city of cityList" [value]="city.value">{{city.city}}</option>
             </select>
@@ -54,17 +54,17 @@
 
           <div class="form-group mt-3">
             <label for="districts">الحي *</label>
-            <select (change)="fireDistrictSelection($event)" name="first" class="form-control" id="districts">
+            <select (change)="fireDistrictSelection($event)" name="unitDistrictID" class="form-control" id="districts">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let district of districtList" value="district.value">{{district.district}}</option>
+              <option *ngFor="let district of districtList" [value]="district.value">{{district.district}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
             <label for="lands">رقم القطعه *</label>
-            <select (change)="fireLandSelection($event)" name="first" class="form-control" id="lands">
+            <select (change)="fireLandSelection($event)" name="landNo" class="form-control" id="lands">
               <option value="" selected>برجاء الاختيار</option>
-              <option *ngFor="let land of landList" value="land.value">{{land.land}}</option>
+              <option *ngFor="let land of landList" [value]="land.value">{{land.land}}</option>
             </select>
           </div>
           <div class="form-group mt-3" *ngIf="showResults">
@@ -76,7 +76,7 @@
       </div>
     </section>
     <div class="text-center">
-      <button (click)="step2Next()" class="btn green-bg white nextbtn">تاكيد </button>
+      <button (click)="step2Next()" [disabled]="cantGo" class="btn green-bg white nextbtn">تاكيد </button>
       <button class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
     </div>
   </div>

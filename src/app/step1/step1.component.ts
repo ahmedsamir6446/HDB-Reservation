@@ -1,12 +1,15 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {NgbDateStruct, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-step1',
   templateUrl: './step1.component.html',
   styleUrls: ['./step1.component.css']
 })
+
 export class Step1Component implements OnInit, AfterViewInit {
   resNum;
   resAmount;
@@ -88,7 +91,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/step2');
   }
   getdp(event) {
-    this.payDate = event.year + '-' + event.month + '-' + event.day;
+    this.payDate = event.day + '/' + event.month + '/' + event.year;
     localStorage.setItem('payDate', this.payDate);
   }
   // fireSelection() {

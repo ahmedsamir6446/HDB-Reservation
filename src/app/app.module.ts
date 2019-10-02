@@ -1,3 +1,4 @@
+import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RulesComponent } from './rules/rules.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbDatepickerConfig, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 const appRoutes: Routes = [
@@ -51,9 +54,12 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule
+    NgbModule,
   ],
-  providers: [],
+  providers: [
+    {provide: NgbDateParserFormatter,
+      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY') }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

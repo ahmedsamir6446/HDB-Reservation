@@ -66,7 +66,7 @@
           <div class="col-6">
             <div class="form-group mt-3">
               <label for="paymentDate">تاريخ ايصال السداد </label>
-              <input #paymentDate id="paymentDate" value="" class="form-control h-40p" placeholder="" name="dp" (click)="d.toggle()" ngbDatepicker
+              <input #paymentDate id="paymentDate" value="" class="form-control h-40p" placeholder="" [placement]="'top'" name="paymentDate" (click)="d.toggle()" ngbDatepicker
                 #d="ngbDatepicker">
             </div>
 

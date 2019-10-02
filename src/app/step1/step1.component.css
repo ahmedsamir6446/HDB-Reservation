@@ -32,3 +32,6 @@ button[disabled]{
 ngb-datepicker {
   width: 235px!important;
 }
+.dropdown-menu, input.form-control.h-40p {
+  right: auto!important;
+}
