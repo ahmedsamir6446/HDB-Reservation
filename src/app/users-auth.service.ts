@@ -150,12 +150,14 @@ export class UsersAuthService {
     this.idsList = [
       this.users[0].natID, this.users[1].natID, this.users[2].natID,
       this.users[3].natID, this.users[4].natID, this.users[5].natID,
-      this.users[6].natID, this.users[7].natID, this.users[8].natID
+      this.users[6].natID, this.users[7].natID, this.users[8].natID,
+      this.users[9].natID, this.users[10].natID, this.users[11].natID
     ];
     this.pwList = [
       this.users[0].pw, this.users[1].pw, this.users[2].pw,
       this.users[3].pw, this.users[4].pw, this.users[5].pw,
-      this.users[6].pw, this.users[7].pw, this.users[8].pw
+      this.users[6].pw, this.users[7].pw, this.users[8].pw,
+      this.users[9].pw, this.users[10].pw, this.users[11].pw
     ];
   }
   saveUser(userIndex: number) {
