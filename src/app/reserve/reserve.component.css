@@ -5,36 +5,45 @@ div.heading-title.heading-border {
   border-right: 5px solid rgb(204, 204, 204);
   padding-left: 15px;
 }
+
 div.heading-title {
   position: relative;
   margin-bottom: 110px;
 }
+
 div.heading-title h2 {
   padding-right: 0px !important;
-    padding-left: 15px !important;
+  padding-left: 15px !important;
 }
+
 p {
   margin-bottom: 30px;
 }
+
 div.cond h3 {
   border: 1px solid rgb(204, 204, 204);
-    margin-top: 30px;
-    padding: 13px 20px;
-    font-size: 15px;
-    color: rgb(51, 51, 51);
-    cursor: pointer;
-    font-size: 16px;
+  margin-top: 30px;
+  padding: 13px 20px;
+  font-size: 15px;
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+  font-size: 16px;
 }
-div.cond p {margin-bottom: 0}
+
+div.cond p {
+  margin-bottom: 0
+}
+
 button.extract {
   background-color: #6c6d70;
-    color: #FFF !important;
-    margin-left: 3px;
+  color: #FFF !important;
+  margin-left: 3px;
 }
+
 div.reserve-wrapper {
-  background-color: rgba(0,0,0,0.05);
-    padding: 6px;
-    border: rgba(0,0,0,0.1) 1px solid;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 6px;
+  border: rgba(0, 0, 0, 0.1) 1px solid;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
