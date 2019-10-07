@@ -190,7 +190,7 @@ export class Step2Component implements OnInit {
     this.changeRef.detectChanges();
   }
   setLandItems(items) {
-    localStorage.setItem('mesa7a', items[0].area);
+    localStorage.setItem('mesaha', items[0].area);
     localStorage.setItem('city', items[0].city);
     localStorage.setItem('neih', items[0].district);
     localStorage.setItem('excellence', items[0].excellence);

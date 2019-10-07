@@ -32,7 +32,7 @@ export class Step3Component implements OnInit {
   adj = localStorage.getItem('adj');
   reg = localStorage.getItem('reg');
   excellence = localStorage.getItem('excellence');
-  mesa7a = localStorage.getItem('mesa7a');
+  mesaha = localStorage.getItem('mesaha');
   birthdayDate = localStorage.getItem ('birthdayDate');
 
   constructor(public router: Router) { }
