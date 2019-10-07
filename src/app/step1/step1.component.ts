@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NgbDateStruct, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -37,7 +37,7 @@ export class Step1Component implements OnInit, AfterViewInit {
   // @ViewChild('paymentMethods') paymentMethods: ElementRef;
 
 
-  getBirthday (natId: string) {
+  getBirthday(natId: string) {
     const birthdayDateUnformatted = natId.substring(1, 7);
     this.birthdayDate = birthdayDateUnformatted.replace(/(\d{2})(\d{2})(\d{2})/, '19$1-$2-$3');
   }
@@ -49,30 +49,28 @@ export class Step1Component implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getBirthday(this.natId);
-    console.log(this.natId);
 
     localStorage.setItem('birthdayDate', this.birthdayDate);
     const urlParams = [];
     window.location.search.replace('?', '').split('&').forEach(function (e, i) {
-        const p = e.split('=');
-        urlParams[p[0]] = p[1];
+      const p = e.split('=');
+      urlParams[p[0]] = p[1];
     });
 
     // We have all the params now -> you can access it by name
-    console.log(urlParams['loaded']);
 
     if (urlParams['loaded']) {
 
     } else {
 
-        const win = (window as any);
-        win.location.search = '?loaded=1';
-        // win.location.reload('?loaded=1');
+      const win = (window as any);
+      win.location.search = '?loaded=1';
+      // win.location.reload('?loaded=1');
     }
 
   }
   ngAfterViewInit() {
-    const xxx = document.getElementById('paymentMethods');
+    const xxx = document.getElementById('paymentNo');
     console.log(xxx);
 
   }
@@ -106,14 +104,25 @@ export class Step1Component implements OnInit, AfterViewInit {
   //    localStorage.setItem('resAmount', resAmount);
   //   }
   // }
-  step1Next() {
+  step1Next(resNum, payDate, branchName) {
+    console.log(resNum, payDate, branchName);
+    localStorage.setItem('payDate', payDate);
+    localStorage.setItem('resNum', resNum);
+    localStorage.setItem('branchName', branchName);
+    this.getPayWayOption();
     this.router.navigateByUrl('/step2');
   }
   getdp(event) {
     this.payDate = event.day + '/' + event.month + '/' + event.year;
     localStorage.setItem('payDate', this.payDate);
   }
-  // fireSelection() {
-  //   localStorage.setItem('payWayOption', this.payWayOption);
-  // }
+  getPayWayOption() {
+    if (this.payment === 'intern') {
+      localStorage.setItem('payWayOption', 'تحويل داخلي ');
+    } else if (this.payment === 'extern') {
+      localStorage.setItem('payWayOption', 'تحويل خارجي');
+    } else if (this.payment === 'hdb') {
+      localStorage.setItem('payWayOption', 'تحويل داخلي من فروع بنك التعمير');
+    }
+  }
 }

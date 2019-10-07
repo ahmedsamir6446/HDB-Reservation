@@ -95,6 +95,7 @@ export class Step2Component implements OnInit {
       return;
     }
     this.govNameTrimmed = govNameTrimmed;
+    localStorage.setItem('gov', govNameTrimmed);
     this.cityList = this.data.cityList;
     const SameGovLsit = this.govList.filter(item => item.gov === govName);
     const govId = SameGovLsit[0].govId;
@@ -181,11 +182,22 @@ export class Step2Component implements OnInit {
       this.excellence = filteredTable[0].excellence;
       this.showResults = true;
       console.log(filteredTable);
+      this.setLandItems(filteredTable);
       this.cantGo = false;
     } else {
       alert('please take screenshot and send to me then refresh and start over ya 5aled beeeh :)');
     }
     this.changeRef.detectChanges();
+  }
+  setLandItems(items) {
+    localStorage.setItem('mesa7a', items[0].area);
+    localStorage.setItem('city', items[0].city);
+    localStorage.setItem('neih', items[0].district);
+    localStorage.setItem('excellence', items[0].excellence);
+    localStorage.setItem('area', items[0].land);
+    localStorage.setItem('reg', items[0].region);
+    localStorage.setItem('adj', items[0].subDistrict);
+    // localStorage.setItem('area', items[7]);
   }
 
 }

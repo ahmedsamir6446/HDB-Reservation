@@ -21,6 +21,7 @@ export class Step3Component implements OnInit {
   name = localStorage.getItem('name');
   payDate = localStorage.getItem('payDate');
   resNum = localStorage.getItem ('resNum');
+  branchName = localStorage.getItem ('branchName');
   resAmount = localStorage.getItem('resAmount');
   payWayOption = localStorage.getItem('payWayOption');
   gov = localStorage.getItem('gov');
@@ -30,6 +31,8 @@ export class Step3Component implements OnInit {
   spaceNo = localStorage.getItem('spaceNo');
   adj = localStorage.getItem('adj');
   reg = localStorage.getItem('reg');
+  excellence = localStorage.getItem('excellence');
+  mesa7a = localStorage.getItem('mesa7a');
   birthdayDate = localStorage.getItem ('birthdayDate');
 
   constructor(public router: Router) { }
