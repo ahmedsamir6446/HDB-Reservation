@@ -51,22 +51,22 @@ export class Step1Component implements OnInit, AfterViewInit {
     this.getBirthday(this.natId);
 
     localStorage.setItem('birthdayDate', this.birthdayDate);
-    const urlParams = [];
-    window.location.search.replace('?', '').split('&').forEach(function (e, i) {
-      const p = e.split('=');
-      urlParams[p[0]] = p[1];
-    });
+    // const urlParams = [];
+    // window.location.search.replace('?', '').split('&').forEach(function (e, i) {
+    //   const p = e.split('=');
+    //   urlParams[p[0]] = p[1];
+    // });
 
-    // We have all the params now -> you can access it by name
+    // // We have all the params now -> you can access it by name
 
-    if (urlParams['loaded']) {
+    // if (urlParams['loaded']) {
 
-    } else {
+    // } else {
 
-      const win = (window as any);
-      win.location.search = '?loaded=1';
-      // win.location.reload('?loaded=1');
-    }
+    //   const win = (window as any);
+    //   win.location.search = '?loaded=1';
+    //   // win.location.reload('?loaded=1');
+    // }
 
   }
   ngAfterViewInit() {

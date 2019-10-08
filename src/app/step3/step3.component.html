@@ -1,15 +1,15 @@
 <app-header [auth]="true"></app-header>
 <div class="wrapper">
-    <section class="page-header page-header-xs" id="Reg">
-        <div class="container">
-          <div class="row">
-            <h1>استمارة حجز ارض</h1>
-            <h1>&nbsp;-&nbsp;
-              <span>قطع أراضي الأكثر تمييز</span>
-            </h1>
-          </div>
-        </div>
-      </section>
+  <section class="page-header page-header-xs" id="Reg">
+    <div class="container">
+      <div class="row">
+        <h1>استمارة حجز ارض</h1>
+        <h1>&nbsp;-&nbsp;
+          <span>قطع أراضي الأكثر تمييز</span>
+        </h1>
+      </div>
+    </div>
+  </section>
   <div class="container">
     <section class="stepA">
       <div class="row m-0">
@@ -103,36 +103,36 @@
     </section>
 
     <section class="stepB">
-        <h4 class="green-bg white py-3 pl-2"> بيانات الارض</h4>
-        <div class="row mt-3 mx-0">
-          <div class="col-6">
-            <h3 class="font-16">المحافظه </h3>
-            <h4 class="cell-detail h-40p">{{gov}}</h4>
+      <h4 class="green-bg white py-3 pl-2"> بيانات الارض</h4>
+      <div class="row mt-3 mx-0">
+        <div class="col-6">
+          <h3 class="font-16">المحافظة</h3>
+          <h4 class="cell-detail h-40p">{{gov}}</h4>
 
-            <h3 class="font-16 mt-4">المنطقه </h3>
-            <h4 class="cell-detail h-40p">{{reg}}</h4>
+          <h3 class="font-16 mt-4">المنطقة</h3>
+          <h4 class="cell-detail h-40p">{{reg}}</h4>
 
-            <h3 class="font-16 mt-4">المجاوره </h3>
-            <h4 class="cell-detail h-40p">{{adj}}</h4>
+          <h3 class="font-16 mt-4">المجاورة</h3>
+          <h4 class="cell-detail h-40p">{{adj}}</h4>
 
-            <h3 class="font-16 mt-4">المساحه </h3>
-            <h4 class="cell-detail h-40p">{{mesaha}}</h4>
+          <h3 class="font-16 mt-4">المساحه </h3>
+          <h4 class="cell-detail h-40p">{{mesaha}}</h4>
 
-          </div>
-          <div class="col-6">
-            <h3 class="font-16">المدينه </h3>
-            <h4 class="cell-detail h-40p">{{city}}</h4>
+        </div>
+        <div class="col-6">
+          <h3 class="font-16">المدينة</h3>
+          <h4 class="cell-detail h-40p">{{city}}</h4>
 
-            <h3 class="font-16 mt-4">الحي </h3>
-            <h4 class="cell-detail h-40p">{{neih}}</h4>
+          <h3 class="font-16 mt-4">الحى</h3>
+          <h4 class="cell-detail h-40p">{{neih}}</h4>
 
-            <h3 class="font-16 mt-4">رقم القطعه</h3>
-            <h4 class="cell-detail h-40p">{{area}}</h4>
+          <h3 class="font-16 mt-4">رقم القطعة</h3>
+          <h4 class="cell-detail h-40p">{{area}}</h4>
 
-            <h3 class="font-16 mt-4">نسبة التميز</h3>
-            <h4 class="cell-detail h-40p">{{excellence}}</h4>
+          <h3 class="font-16 mt-4">نسبة التميز</h3>
+          <h4 class="cell-detail h-40p">{{excellence}}</h4>
 
-            <!-- <h3 class="font-16 mt-4">نوع الوحده</h3>
+          <!-- <h3 class="font-16 mt-4">نوع الوحده</h3>
             <h4 class="cell-detail h-40p">???</h4>
 
             <h3 class="font-16 mt-4">رقم الوحده السكنيه</h3>
@@ -143,22 +143,19 @@
 
             <h3 class="font-16 mt-4">نوع الدور</h3>
             <h4 class="cell-detail h-40p">???</h4> -->
-          </div>
+        </div>
 
-        </div>
-      </section>
-      <div class="promise custom-control custom-checkbox">
-          <input type="checkbox"  id="customCheck1" [(ngModel)]="checkboxValue"
-           (change)="toggleEditable()">
-          <label class="custom-control-label" for="customCheck1">أقر بصحة البيانات و المستندات
-             المقدمه مني و اتحمل كامل المسؤليه المدنيه والجنائيه
-             و في حالة مخالفة هذه البيانات او المستندات للحقيقه  يعتبر
-              الطلب لاغي ولا يعتد به دون ادني مسؤليه علي الجهة الاداريه او بنك التعميد و الاسكان</label>
       </div>
-      <div class="text-center">
-          <button (click)="step3Next()" [disabled]="!checked" class="btn green-bg white nextbtn">ارسال الطلب</button>
-          <button style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
-        </div>
+    </section>
+    <div class="promise custom-control custom-checkbox">
+      <input type="checkbox" id="customCheck1" [(ngModel)]="checkboxValue" (change)="toggleEditable()">
+      <label class="custom-control-label" for="customCheck1">أقر بصحة البيانات و المستندات المقدمه مني و اتحمل كامل المسؤليه المدنيه والجنائيه و في حالة مخالفة هذه البيانات او
+        المستندات للحقيقه يعتبر الطلب لاغي ولا يعتد به دون ادني مسؤليه علي الجهة الاداريه او بنك التعميد و الاسكان</label>
+    </div>
+    <div class="text-center">
+      <button (click)="step3Next()" [disabled]="!checked" class="btn green-bg white nextbtn">ارسال الطلب</button>
+      <button style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
+    </div>
 
   </div>
 
