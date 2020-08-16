@@ -1,53 +1,75 @@
 <app-header [auth]="false"></app-header>
-<section style="padding: 20px">
+<section style="padding: 20px;">
   <div class="container">
     <div class="row">
-
       <div class="col-md-6 offset-md-3">
         <div class="box-static box-border-top p-30">
           <div class="box-title mb-30">
             <h2 class="fs-20">دخول مستخدم حالي</h2>
           </div>
           <div class="clearfix">
-              <div class="form-group">
-                <label class="label ">الرقم القومي</label>
-                <input type="text"
+            <div class="form-group">
+              <label class="label">الرقم القومي</label>
+              <input
+                type="text"
                 name="userId"
                 [(ngModel)]="userId"
                 (ngModelChange)="getuserId(userId)"
                 class="form-control"
                 placeholder="الرقم القومي"
-                required >
-                <div class="help-block with-errors" style="color :red"></div>
-              </div>
+                required
+              />
+              <div class="help-block with-errors" style="color: red;"></div>
+            </div>
 
-              <div class="form-group">
-                <label class="label ">كلمة المرور</label>
-                <input type="password"
+            <div class="form-group">
+              <label class="label">كلمة المرور</label>
+              <input
+                type="password"
                 name="userpw"
                 [(ngModel)]="userpw"
                 (ngModelChange)="getuserpw(userpw)"
-                class="form-control" placeholder="كلمة المرور" required>
-                <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password" style="margin-left: 5px;"></span>
-                <div class="help-block with-errors" style="color :red"></div>
-              </div>
-              <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                  <button (click)="onSubmits()" [disabled]="!userId || !userpw" class="btn green-bg white green-border">الدخول</button>
-                </div>
-                <div class="col-md-1 col-sm-6 col-xs-6 text-center">
+                class="form-control"
+                placeholder="كلمة المرور"
+                required
+              />
+              <span
+                toggle="#password"
+                class="fa fa-fw fa-eye field-icon toggle-password"
+                style="margin-left: 5px;"
+              ></span>
+              <div class="help-block with-errors" style="color: red;"></div>
+            </div>
 
-                </div>
-                <div class="col-md-8 col-sm-6 col-xs-6 text-center">
-                  <div class="form-tip pt-10">
-                    <a class="green" style="font-weight: bold;">نسيت كلمة المرور / ارسل كلمة مرور جديدة؟</a>
-                  </div>
+            <div class="cap">
+              <input type="checkbox" #cap (change)="true" />
+              <img src="../../assets/img/cap.png" />
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-6">
+                <button
+                  (click)="onSubmits()"
+                  [disabled]="!userId || !userpw || !cap.checked"
+                  class="btn green-bg white green-border"
+                >
+                  الدخول
+                </button>
+              </div>
+              <div class="col-md-1 col-sm-6 col-xs-6 text-center"></div>
+              <div class="col-md-8 col-sm-6 col-xs-6 text-center">
+                <div class="form-tip pt-10">
+                  <a class="green" style="font-weight: bold;"
+                    >نسيت كلمة المرور / ارسل كلمة مرور جديدة؟</a
+                  >
                 </div>
               </div>
-              <small *ngIf="userIdStatus === false || userpwStatus === false" class="text-danger">الرقم القومي او كلمة المرور غير صحيحه </small>
-
+            </div>
+            <small
+              *ngIf="userIdStatus === false || userpwStatus === false"
+              class="text-danger"
+              >الرقم القومي او كلمة المرور غير صحيحه
+            </small>
           </div>
-
         </div>
       </div>
     </div>

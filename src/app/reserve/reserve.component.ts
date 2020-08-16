@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reserve',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reserve.component.css']
 })
 export class ReserveComponent implements OnInit {
-
-  constructor() { }
+  public landId: number;
+  localStorageAlice = localStorage;
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.landId = params['id'];
+    });
   }
 
 }

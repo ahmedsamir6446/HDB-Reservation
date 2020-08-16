@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersAuthService } from '../users-auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +9,19 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   logged = false;
-  constructor(public router: Router) {
+  constructor(public router: Router, protected usersAuth: UsersAuthService) {
     this.logged =  JSON.parse(localStorage.getItem('userLoggedIn'));
-    console.log(this.logged);
-
   }
 
   ngOnInit() {
   }
-  checkAndGo() {
+  checkAndGo(page) {
     if (this.logged) {
-      this.router.navigateByUrl('/reserve');
+      this.router.navigateByUrl(`/reserve/${page}`);
+      this.usersAuth.clearLands();
+      localStorage.removeItem('chosenLand');
+      localStorage.setItem('chosenLand', page);
+      this.usersAuth.saveLand(page);
     }
   }
 

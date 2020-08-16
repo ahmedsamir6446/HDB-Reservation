@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   userpwStatus;
   userLoggedIn;
 
-  constructor(public router: Router, public usersAuth: UsersAuthService) {
+  constructor(public router: Router, protected usersAuth: UsersAuthService) {
   }
 
   ngOnInit() {
