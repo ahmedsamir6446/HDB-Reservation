@@ -105,7 +105,7 @@ export class Step1Component implements OnInit, AfterViewInit {
   //    localStorage.setItem('resAmount', resAmount);
   //   }
   // }
-  step1Next(resNum, payDate, branchName) {
+  step1Next(resNum, payDate, branchName?) {
     console.log(resNum, payDate, branchName);
     localStorage.setItem('payDate', payDate);
     localStorage.setItem('resNum', resNum);
