@@ -18,6 +18,7 @@ export class Step1Component implements OnInit, AfterViewInit {
   payWayOption: string;
   birthdayDate;
   model: any;
+  localStorageAlice = localStorage;
   public messageForm: FormGroup;
 
   natId = localStorage.getItem('natID');
@@ -110,7 +111,7 @@ export class Step1Component implements OnInit, AfterViewInit {
     localStorage.setItem('resNum', resNum);
     localStorage.setItem('branchName', branchName);
     this.getPayWayOption();
-    this.router.navigateByUrl('/step2');
+    this.router.navigateByUrl(`/step2/${localStorage.getItem('chosenLand')}`);
   }
   getdp(event) {
     this.payDate = event.day + '/' + event.month + '/' + event.year;

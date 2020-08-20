@@ -1,18 +1,16 @@
 import { DataService } from './data.service';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DataService0 } from './data0.service';
+import { DataService1 } from './data1.service';
 
 @Component({
   selector: 'app-step2',
   templateUrl: './step2.component.html',
   styleUrls: ['./step2.component.css'],
-  providers: [
-    DataService,
-  ],
+  providers: [DataService],
 })
 export class Step2Component implements OnInit {
-
   govList;
   subDistrictList = [];
   regionList = [];
@@ -30,10 +28,15 @@ export class Step2Component implements OnInit {
   landNo;
   showResults = false;
   cantGo = true;
+  localStorageAlice = localStorage;
 
-  constructor(public router: Router,
+  constructor(
+    public router: Router,
     protected changeRef: ChangeDetectorRef,
-    protected data: DataService) {
+    protected data: DataService0,
+    // protected data0: DataService0,
+    // protected data1: DataService1
+  ) {
     // this.cityList = data.cityList;
     this.govList = data.govList;
     // this.subDistrictList = data.subDistrictsList;
@@ -42,11 +45,10 @@ export class Step2Component implements OnInit {
     // this.regionList = data.regionList;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   step2Next() {
-    this.router.navigateByUrl('/step3');
+    this.router.navigateByUrl(`/step3/${localStorage.getItem('chosenLand')}`);
   }
 
   setDefault() {
@@ -82,14 +84,14 @@ export class Step2Component implements OnInit {
     }
     this.showResults = false;
     this.cantGo = true;
-
   }
   removeSpaces(item: string) {
     item = item.replace(' ', '');
   }
   fireGovSelection(event) {
     this.clearState('gov');
-    const govName = event.target.options[event.target.options.selectedIndex].text;
+    const govName =
+      event.target.options[event.target.options.selectedIndex].text;
     const govNameTrimmed = govName.replace(/\s/g, '');
     if (govNameTrimmed === this.plsChoose) {
       return;
@@ -97,75 +99,92 @@ export class Step2Component implements OnInit {
     this.govNameTrimmed = govNameTrimmed;
     localStorage.setItem('gov', govNameTrimmed);
     this.cityList = this.data.cityList;
-    const SameGovLsit = this.govList.filter(item => item.gov === govName);
+    const SameGovLsit = this.govList.filter((item) => item.gov === govName);
     const govId = SameGovLsit[0].govId;
-    const cities = this.cityList.filter(item => item.govId === govId);
+    const cities = this.cityList.filter((item) => item.govId === govId);
     this.cityList = cities;
     this.changeRef.detectChanges();
   }
 
   fireCitySelection(event) {
     this.clearState('city');
-    const cityName = event.target.options[event.target.options.selectedIndex].text;
+    const cityName =
+      event.target.options[event.target.options.selectedIndex].text;
     const cityNameTrimmed = cityName.replace(/\s/g, '');
     if (cityNameTrimmed === this.plsChoose) {
       return;
     }
     this.cityNameTrimmed = cityNameTrimmed;
     this.regionList = this.data.regionList;
-    const SameCityLsit = this.cityList.filter(item => item.city === cityName);
+    const SameCityLsit = this.cityList.filter((item) => item.city === cityName);
     const cityId = SameCityLsit[0].cityId;
-    const regions = this.regionList.filter(item => item.cityId === cityId);
+    const regions = this.regionList.filter((item) => item.cityId === cityId);
     this.regionList = regions;
     this.changeRef.detectChanges();
   }
   fireRegionSelection(event) {
     this.clearState('region');
-    const regionName = event.target.options[event.target.options.selectedIndex].text;
+    const regionName =
+      event.target.options[event.target.options.selectedIndex].text;
     const regionNameTrimmed = regionName.replace(/\s/g, '');
     if (regionNameTrimmed === this.plsChoose) {
       return;
     }
     this.regionNameTrimmed = regionNameTrimmed;
     this.districtList = this.data.districtList;
-    const SameRegionLsit = this.regionList.filter(item => item.region === regionName);
+    const SameRegionLsit = this.regionList.filter(
+      (item) => item.region === regionName
+    );
     const regionId = SameRegionLsit[0].regionId;
-    const districts = this.districtList.filter(item => item.regionId === regionId);
+    const districts = this.districtList.filter(
+      (item) => item.regionId === regionId
+    );
     this.districtList = districts;
     this.changeRef.detectChanges();
   }
   fireDistrictSelection(event) {
     this.clearState('district');
-    const districtName = event.target.options[event.target.options.selectedIndex].text;
+    const districtName =
+      event.target.options[event.target.options.selectedIndex].text;
     const districtNameTrimmed = districtName.replace(/\s/g, '');
     if (districtNameTrimmed === this.plsChoose) {
       return;
     }
     this.districtNameTrimmed = districtNameTrimmed;
     this.subDistrictList = this.data.subDistrictsList;
-    const SameDistrictLsit = this.districtList.filter(item => item.district === districtName);
+    const SameDistrictLsit = this.districtList.filter(
+      (item) => item.district === districtName
+    );
     const districtId = SameDistrictLsit[0].districtId;
-    const subDistricts = this.subDistrictList.filter(item => item.districtId === districtId);
+    const subDistricts = this.subDistrictList.filter(
+      (item) => item.districtId === districtId
+    );
     this.subDistrictList = subDistricts;
     this.changeRef.detectChanges();
   }
   fireSubDistrictSelection(event) {
     this.clearState('subDistrict');
-    const subDistrictName = event.target.options[event.target.options.selectedIndex].text;
+    const subDistrictName =
+      event.target.options[event.target.options.selectedIndex].text;
     const subDistrictNameTrimmed = subDistrictName.replace(/\s/g, '');
     if (subDistrictNameTrimmed === this.plsChoose) {
       return;
     }
     this.subDistrictNameTrimmed = subDistrictNameTrimmed;
     this.landList = this.data.landList;
-    const SameSubDistrictLsit = this.subDistrictList.filter(item => item.subDistrict === subDistrictName);
+    const SameSubDistrictLsit = this.subDistrictList.filter(
+      (item) => item.subDistrict === subDistrictName
+    );
     const subDistrictId = SameSubDistrictLsit[0].subDistrictId;
-    const lands = this.landList.filter(item => item.subDistrictId === subDistrictId);
+    const lands = this.landList.filter(
+      (item) => item.subDistrictId === subDistrictId
+    );
     this.landList = lands;
     this.changeRef.detectChanges();
   }
   fireLandSelection(event) {
-    const landNo = event.target.options[event.target.options.selectedIndex].text;
+    const landNo =
+      event.target.options[event.target.options.selectedIndex].text;
     const landNoTrimmed = landNo.replace(/\s/g, '');
     if (landNoTrimmed === this.plsChoose) {
       return;
@@ -177,7 +196,11 @@ export class Step2Component implements OnInit {
   showLandDetails() {
     if (this.landNo && this.subDistrictNameTrimmed) {
       // tslint:disable-next-line:max-line-length
-      const filteredTable = this.data.allTable.filter(item => item.land === this.landNo && item.subDistrict === this.subDistrictNameTrimmed);
+      const filteredTable = this.data.allTable.filter(
+        (item) =>
+          item.land === this.landNo &&
+          item.subDistrict === this.subDistrictNameTrimmed
+      );
       this.area = filteredTable[0].area;
       this.excellence = filteredTable[0].excellence;
       this.showResults = true;
@@ -185,7 +208,9 @@ export class Step2Component implements OnInit {
       this.setLandItems(filteredTable);
       this.cantGo = false;
     } else {
-      alert('please take screenshot and send to me then refresh and start over ya 5aled beeeh :)');
+      alert(
+        'please take screenshot and send to me then refresh and start over ya 5aled beeeh :)'
+      );
     }
     this.changeRef.detectChanges();
   }
@@ -199,5 +224,4 @@ export class Step2Component implements OnInit {
     localStorage.setItem('adj', items[0].subDistrict);
     // localStorage.setItem('area', items[7]);
   }
-
 }

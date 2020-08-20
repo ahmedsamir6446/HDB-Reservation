@@ -31,7 +31,7 @@
           </p>
         </div>
 
-          <button routerLink="/step1" class="btn green-bg white green-border mt-4">اوافق علي الشروط و الاحكام</button>
+        <button [routerLink]="['/step1/', localStorageAlice.getItem('chosenLand')]" class="btn green-bg white green-border mt-4">اوافق علي الشروط و الاحكام</button>
 
 
       </div>

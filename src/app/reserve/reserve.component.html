@@ -28,16 +28,17 @@
           </div>
           </div>
 
-          <p>قطع اراضى اسكان اكثر تميزا كاملة المرافق بعدد(871) قطعة ارض سكنية بمدن (القاهرة الجديدة ـ 6 اكتوبر ـ العبور ـ دمياط الجديدة ـ بدر ـ العاشر من رمضان ـ اسوان الجديدة ـ المنيا الجديدة) بمساحات تتراوح من(369م2 ألى 1434م2).
-
+          <p>
+            {{localStorageAlice.getItem('desc')}}
           </p>
+
 
           <br>
         </div>
         <div class="col-md-5 col-sm-5 pl-0">
           <img src="../../assets/img/reserve-details2.png" class="w-100" alt="">
           <div class="reserve-wrapper">
-            <button routerLink="/rules" class="btn green-bg white green-border mr-3">احجز الآن</button>
+            <button [routerLink]="['/rules/', localStorageAlice.getItem('chosenLand')]" class="btn green-bg white green-border mr-3">احجز الآن</button>
           </div>
         </div>
       </div>
@@ -61,11 +62,10 @@
         <div class="cond w-100">
           <h3 style="color :#ff4848">تنويه </h3>
           <p class="mb-4">
-            يرجى مراجعة بيانات الإستمارة قبل الحفظ على الموقع
-
+            {{localStorageAlice.getItem('attension')}}
           </p>
         </div>
-        <img src="../../assets/img/thumb11.jpeg" class="img-fluid mt-3" alt="">
+        <img src="../../assets/img/land-1.jpeg" class="img-fluid mt-3" alt="">
       </div>
     </div>
   </section>

@@ -5,7 +5,7 @@
       <div class="row">
         <h1>استمارة حجز ارض</h1>
         <h1>&nbsp;-&nbsp;
-          <span>قطع أراضي الأكثر تمييز</span>
+          <span>{{localStorageAlice.getItem('title')}}</span>
         </h1>
       </div>
     </div>
@@ -56,10 +56,10 @@
               <small>  يرجي عدم ادخال رموز ما عدا '/' و '-'</small>
             </div>
 
-            <div class="form-group mt-3">
+            <!-- <div class="form-group mt-3">
               <label for="bankBranchName">الفرع</label>
               <input #bankBranchName id="bankBranchName" type="text" name="resNum" class="form-control h-40p" placeholder="">
-            </div>
+            </div> -->
 
           </div>
 
@@ -71,7 +71,7 @@
             </div>
 
             <div class="form-group mt-3">
-              <label for="bankName">البنك</label>
+              <!-- <label for="bankName">البنك</label>
               <select *ngIf="payment === 'intern' || payment === 'extern' || !payment" name="first" class="form-control" id="bankName">
                 <option value="0">برجاء الاختيار</option>
                 <option *ngIf="payment !== 'extern'" value="1">بنك مصر</option>
@@ -115,13 +115,13 @@
                 <option *ngIf="payment !== 'extern'" value="40">بنك ناصر الإجتماعى</option>
                 <option value="41" *ngIf="payment !== 'intern'">بنك خارج مصر</option>
               </select>
-              <h4 *ngIf="payment === 'hdb'">بنك التعمير و الاسكان</h4>
+              <h4 *ngIf="payment === 'hdb'">بنك التعمير و الاسكان</h4> -->
             </div>
 
             <div class="form-group mt-5">
-              <label for="nIDImg">ارفاق صورة مستند السداد</label>
+              <!-- <label for="nIDImg">ارفاق صورة مستند السداد</label>
               <input type="file" class="form-control-file" id="nIDImg">
-              <p style="font-size: 12px;" class="m-0">يسمح فقط بالملفات من نوع Jpg, Jpeg, pdf بحد اقصي ٣ ميجا بايت</p>
+              <p style="font-size: 12px;" class="m-0">يسمح فقط بالملفات من نوع Jpg, Jpeg, pdf بحد اقصي ٣ ميجا بايت</p> -->
             </div>
           </div>
 
@@ -174,7 +174,7 @@
       </div>
     </section>
 
-    <button (click)="step1Next(paymentNo.value, paymentDate.value, bankBranchName.value )" class="btn green-bg white nextbtn">التالي</button>
+    <button (click)="step1Next(paymentNo.value, paymentDate.value )" class="btn green-bg white nextbtn">التالي</button>
 
   </div>
 
