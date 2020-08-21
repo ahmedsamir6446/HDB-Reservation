@@ -8,7 +8,6 @@ div.heading-title.heading-border {
 
 div.heading-title {
   position: relative;
-  margin-bottom: 110px;
 }
 
 div.heading-title h2 {
@@ -32,6 +31,13 @@ div.cond h3 {
 
 div.cond p {
   margin-bottom: 0
+}
+
+div.loader {
+  display: flex;
+  height: 65vh;
+  justify-content: center;
+  align-items: center;
 }
 
 button.extract {
