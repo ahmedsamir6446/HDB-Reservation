@@ -55,7 +55,7 @@ export class DataService0 {
     {
       cityId: 10,
       regionId: 5,
-      region: '  ( الحى الثالث المجتمع الرابع . مجاورة (3 ب',
+      region: '( الحى الثالث المجتمع الرابع . مجاورة (3 ب',
       value: '3',
     },
     {
@@ -178,7 +178,6 @@ export class DataService0 {
   districtList = [
     { regionId: 1, districtId: 1, district: 'الحي الثالث', value: '1' },
     { regionId: 2, districtId: 2, district: 'المنطقة الشماليه', value: '1' },
-
     { regionId: 3, districtId: 3, district: 'الثاني', value: '1' },
     { regionId: 4, districtId: 4, district: 'الثالث', value: '1' },
     { regionId: 5, districtId: 5, district: 'الثالث', value: '1' },
@@ -258,19 +257,19 @@ export class DataService0 {
     {
       districtId: 3,
       subDistrictId: 4,
-      subDistrict: ' ( مجتمع أول . مجاورة ( 1',
+      subDistrict: '( مجتمع أول . مجاورة ( 1',
       value: '1',
     },
     {
       districtId: 3,
       subDistrictId: 5,
-      subDistrict: ' ( مجتمع أول . مجاورة ( 3',
+      subDistrict: '( مجتمع أول . مجاورة ( 3',
       value: '2',
     },
     {
       districtId: 4,
       subDistrictId: 6,
-      subDistrict: ' ( المجتمع الرابع مجاورة ( 1',
+      subDistrict: '( المجتمع الرابع مجاورة ( 1',
       value: '1',
     },
     {
