@@ -180,7 +180,6 @@ export class Step2Component implements OnInit {
     localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
 
     this.landList = this.data.landList;
-
     this.landList = this.landList.filter(
       (land) =>
         land.subDistrictId ===
@@ -188,7 +187,6 @@ export class Step2Component implements OnInit {
           (subDistrict) => subDistrict.value === event.target.value
         ).subDistrictId
     );
-
     this.changeRef.detectChanges();
   }
 

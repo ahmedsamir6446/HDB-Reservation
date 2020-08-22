@@ -38,7 +38,7 @@
             </select>
           </div>
           <div class="form-group mt-3" *ngIf="showResults">
-            <h3 class="font-16">المساحه</h3>
+            <h3 class="font-16">المساحة</h3>
             <h4 class="cell-detail h-40p">{{area}}</h4>
           </div>
         </div>
@@ -61,8 +61,8 @@
           </div>
 
           <div class="form-group mt-3">
-            <label for="lands">رقم القطعة *</label>
-            <select (change)="fireLandSelection($event)" name="landNo" class="form-control" id="lands">
+            <label for="landNo">رقم القطعة *</label>
+            <select (change)="fireLandSelection($event)" name="landNo" class="form-control" id="landNo">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let land of landList" [value]="land.value">{{land.land}}</option>
             </select>
