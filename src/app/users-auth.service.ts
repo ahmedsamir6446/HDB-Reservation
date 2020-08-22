@@ -244,6 +244,9 @@ export class UsersAuthService {
     localStorage.setItem('attension', this.lands[id].attension);
     localStorage.setItem('img', this.lands[id].img);
   }
+  getLandTitle(id) {
+    return this.lands[id].title;
+  }
   clearLands() {
     localStorage.removeItem('title');
     localStorage.removeItem('startDate');

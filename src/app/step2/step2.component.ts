@@ -193,6 +193,8 @@ export class Step2Component implements OnInit {
   }
 
   fireLandSelection(event) {
+    this.area = '';
+    this.excellence = '';
     this.selectedRow.land =
       event.target.options[event.target.options.selectedIndex].text;
     localStorage.removeItem('selectedRow');
@@ -212,9 +214,8 @@ export class Step2Component implements OnInit {
       const selectedTableItem = this.data.allTable.find(
         (item) =>
           item.city === this.selectedRow.city &&
-          item.region === this.selectedRow.region &&
           item.district === this.selectedRow.district &&
-          item.subDistrict === this.selectedRow.subDistrict
+          item.land === this.selectedRow.land
       );
 
       if (selectedTableItem) {
@@ -224,6 +225,8 @@ export class Step2Component implements OnInit {
         console.log(this.selectedRow);
         console.log('اعمل ريفريش بقي');
       }
+      console.log(selectedTableItem);
+
       this.area = selectedTableItem.area;
       this.excellence = selectedTableItem.excellence;
       this.selectedRow.area = this.area;

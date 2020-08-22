@@ -33,7 +33,14 @@
         </div>
         <div class="col-md-5 col-sm-5 pl-0">
           <img
-            src="../../assets/img/reserve-details2.png"
+          *ngIf="selectedLand.id === 0"
+            src="../../assets/img/reserve-details0.png"
+            class="w-100"
+            alt=""
+          />
+          <img
+          *ngIf="selectedLand.id === 1"
+            src="../../assets/img/reserve-details1.png"
             class="w-100"
             alt=""
           />

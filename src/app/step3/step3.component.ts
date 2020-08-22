@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsersAuthService } from '../users-auth.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step3',
@@ -10,6 +12,7 @@ export class Step3Component implements OnInit {
 
   checkboxValue: boolean;
   checked: boolean;
+  landTitle;
   natId = localStorage.getItem('natID');
   phoneNo = localStorage.getItem('phoneNo');
   address = localStorage.getItem('address');
@@ -34,14 +37,23 @@ export class Step3Component implements OnInit {
   excellence = localStorage.getItem('excellence');
   mesaha = localStorage.getItem('mesaha');
   birthdayDate = localStorage.getItem ('birthdayDate');
+  selectedRow;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, protected route: ActivatedRoute, protected auth: UsersAuthService) { }
 
   ngOnInit() {
+    this.selectedRow = JSON.parse(localStorage.getItem('selectedRow'));
+    this.route.params.subscribe((params) => {
+      this.landTitle = this.auth.getLandTitle(+params['id']);
+    });
+
   }
 
   step3Next() {
-    this.router.navigateByUrl('/step4');
+    this.router.navigateByUrl(`/step4/${localStorage.getItem('chosenLand')}`);
+  }
+  step3back() {
+    this.router.navigateByUrl(`/step2/${localStorage.getItem('chosenLand')}`);
   }
   toggleEditable() {
     if (this.checkboxValue) {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsersAuthService } from '../users-auth.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step4',
@@ -7,10 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./step4.component.css']
 })
 export class Step4Component implements OnInit {
+  landTitle;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, protected route: ActivatedRoute, protected auth: UsersAuthService) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.landTitle = this.auth.getLandTitle(+params['id']);
+    });
   }
 
   step4Next() {

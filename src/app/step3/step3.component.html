@@ -5,7 +5,7 @@
       <div class="row">
         <h1>استمارة حجز ارض</h1>
         <h1>&nbsp;-&nbsp;
-          <span>قطع أراضي الأكثر تمييز</span>
+          <span>{{landTitle}}</span>
         </h1>
       </div>
     </div>
@@ -101,30 +101,30 @@
       <div class="row mt-3 mx-0">
         <div class="col-6">
           <h3 class="font-16">المحافظة</h3>
-          <h4 class="cell-detail h-40p">{{gov}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.gov}}</h4>
 
           <h3 class="font-16 mt-4">المنطقة</h3>
-          <h4 class="cell-detail h-40p">{{reg}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.region}}</h4>
 
           <h3 class="font-16 mt-4">المجاورة</h3>
-          <h4 class="cell-detail h-40p">{{adj}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.subDistrict}}</h4>
 
           <h3 class="font-16 mt-4">المساحه </h3>
-          <h4 class="cell-detail h-40p">{{mesaha}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.area}}</h4>
 
         </div>
         <div class="col-6">
           <h3 class="font-16">المدينة</h3>
-          <h4 class="cell-detail h-40p">{{city}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.city}}</h4>
 
           <h3 class="font-16 mt-4">الحى</h3>
-          <h4 class="cell-detail h-40p">{{neih}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.district}}</h4>
 
           <h3 class="font-16 mt-4">رقم القطعة</h3>
-          <h4 class="cell-detail h-40p">{{area}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.land}}</h4>
 
           <h3 class="font-16 mt-4">نسبة التميز</h3>
-          <h4 class="cell-detail h-40p">{{excellence}}</h4>
+          <h4 class="cell-detail h-40p">{{selectedRow.excellence}}</h4>
 
           <!-- <h3 class="font-16 mt-4">نوع الوحده</h3>
             <h4 class="cell-detail h-40p">???</h4>
@@ -148,7 +148,7 @@
     </div>
     <div class="text-center">
       <button (click)="step3Next()" [disabled]="!checked" class="btn green-bg white nextbtn">ارسال الطلب</button>
-      <button style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
+      <button (click)="step3back()" style="background-color: #565a5b" class="btn white nextbtn mr-3">رجوع للتعديل</button>
     </div>
 
   </div>
