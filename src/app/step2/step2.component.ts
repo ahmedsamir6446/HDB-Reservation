@@ -1,8 +1,10 @@
 import { DataService } from './data.service';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService0 } from './data0.service';
 import { DataService1 } from './data1.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { debounceTime, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step2',
@@ -12,6 +14,7 @@ import { DataService1 } from './data1.service';
 })
 export class Step2Component implements OnInit {
   govList;
+  types;
   subDistrictList = [];
   regionList = [];
   cityList = [];
@@ -29,26 +32,38 @@ export class Step2Component implements OnInit {
   showResults = false;
   cantGo = true;
   localStorageAlice = localStorage;
+  data;
+  selectedRow = {
+    land: '',
+    subDistrict: '',
+    district: '',
+    region: '',
+    city: '',
+    gov: '',
+    area: '',
+    excellence: '',
+  };
 
   constructor(
     public router: Router,
     protected changeRef: ChangeDetectorRef,
-    protected data: DataService0,
-    // protected data0: DataService0,
-    // protected data1: DataService1
-  ) {
-    // this.cityList = data.cityList;
-    this.govList = data.govList;
-    // this.subDistrictList = data.subDistrictsList;
-    // this.districtList = data.districtList;
-    // this.landList = data.landList;
-    // this.regionList = data.regionList;
-  }
+    protected usedData0: DataService0,
+    protected usedData1: DataService1,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.pipe(debounceTime(300)).subscribe((params) => {
+      this.data = +params['id'] === 0 ? this.usedData0 : this.usedData1;
+      this.govList = this.data.govList;
+    });
+  }
 
   step2Next() {
     this.router.navigateByUrl(`/step3/${localStorage.getItem('chosenLand')}`);
+  }
+  step2back() {
+    this.router.navigateByUrl(`/step1/${localStorage.getItem('chosenLand')}`);
   }
 
   setDefault() {
@@ -88,124 +103,134 @@ export class Step2Component implements OnInit {
   removeSpaces(item: string) {
     item = item.replace(' ', '');
   }
-  fireGovSelection(event) {
+  public fireGovSelection(event) {
     this.clearState('gov');
-    const govName =
+
+    this.selectedRow.gov =
       event.target.options[event.target.options.selectedIndex].text;
-    const govNameTrimmed = govName.replace(/\s/g, '');
-    if (govNameTrimmed === this.plsChoose) {
-      return;
-    }
-    this.govNameTrimmed = govNameTrimmed;
-    localStorage.setItem('gov', govNameTrimmed);
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.cityList = this.data.cityList;
-    const SameGovLsit = this.govList.filter((item) => item.gov === govName);
-    const govId = SameGovLsit[0].govId;
-    const cities = this.cityList.filter((item) => item.govId === govId);
-    this.cityList = cities;
+    this.cityList = this.cityList.filter(
+      (city) =>
+        city.govId ===
+        this.govList.find((gov) => gov.value === event.target.value).govId
+    );
     this.changeRef.detectChanges();
   }
 
   fireCitySelection(event) {
     this.clearState('city');
-    const cityName =
+
+    this.selectedRow.city =
       event.target.options[event.target.options.selectedIndex].text;
-    const cityNameTrimmed = cityName.replace(/\s/g, '');
-    if (cityNameTrimmed === this.plsChoose) {
-      return;
-    }
-    this.cityNameTrimmed = cityNameTrimmed;
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.regionList = this.data.regionList;
-    const SameCityLsit = this.cityList.filter((item) => item.city === cityName);
-    const cityId = SameCityLsit[0].cityId;
-    const regions = this.regionList.filter((item) => item.cityId === cityId);
-    this.regionList = regions;
+    this.regionList = this.regionList.filter(
+      (region) =>
+        region.cityId ===
+        this.cityList.find((city) => city.value === event.target.value).cityId
+    );
     this.changeRef.detectChanges();
   }
   fireRegionSelection(event) {
     this.clearState('region');
-    const regionName =
+
+    this.selectedRow.region =
       event.target.options[event.target.options.selectedIndex].text;
-    const regionNameTrimmed = regionName.replace(/\s/g, '');
-    if (regionNameTrimmed === this.plsChoose) {
-      return;
-    }
-    this.regionNameTrimmed = regionNameTrimmed;
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.districtList = this.data.districtList;
-    const SameRegionLsit = this.regionList.filter(
-      (item) => item.region === regionName
+    this.districtList = this.districtList.filter(
+      (district) =>
+        district.regionId ===
+        this.regionList.find((region) => region.value === event.target.value)
+          .regionId
     );
-    const regionId = SameRegionLsit[0].regionId;
-    const districts = this.districtList.filter(
-      (item) => item.regionId === regionId
-    );
-    this.districtList = districts;
     this.changeRef.detectChanges();
   }
   fireDistrictSelection(event) {
     this.clearState('district');
-    const districtName =
+
+    this.selectedRow.district =
       event.target.options[event.target.options.selectedIndex].text;
-    const districtNameTrimmed = districtName.replace(/\s/g, '');
-    if (districtNameTrimmed === this.plsChoose) {
-      return;
-    }
-    this.districtNameTrimmed = districtNameTrimmed;
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.subDistrictList = this.data.subDistrictsList;
-    const SameDistrictLsit = this.districtList.filter(
-      (item) => item.district === districtName
+    this.subDistrictList = this.subDistrictList.filter(
+      (subDistrict) =>
+        subDistrict.districtId ===
+        this.districtList.find(
+          (district) => district.value === event.target.value
+        ).districtId
     );
-    const districtId = SameDistrictLsit[0].districtId;
-    const subDistricts = this.subDistrictList.filter(
-      (item) => item.districtId === districtId
-    );
-    this.subDistrictList = subDistricts;
     this.changeRef.detectChanges();
   }
   fireSubDistrictSelection(event) {
     this.clearState('subDistrict');
-    const subDistrictName =
+
+    this.selectedRow.subDistrict =
       event.target.options[event.target.options.selectedIndex].text;
-    const subDistrictNameTrimmed = subDistrictName.replace(/\s/g, '');
-    if (subDistrictNameTrimmed === this.plsChoose) {
-      return;
-    }
-    this.subDistrictNameTrimmed = subDistrictNameTrimmed;
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.landList = this.data.landList;
-    const SameSubDistrictLsit = this.subDistrictList.filter(
-      (item) => item.subDistrict === subDistrictName
+
+    this.landList = this.landList.filter(
+      (land) =>
+        land.subDistrictId ===
+        this.subDistrictList.find(
+          (subDistrict) => subDistrict.value === event.target.value
+        ).subDistrictId
     );
-    const subDistrictId = SameSubDistrictLsit[0].subDistrictId;
-    const lands = this.landList.filter(
-      (item) => item.subDistrictId === subDistrictId
-    );
-    this.landList = lands;
+
     this.changeRef.detectChanges();
   }
+
   fireLandSelection(event) {
-    const landNo =
+    this.selectedRow.land =
       event.target.options[event.target.options.selectedIndex].text;
-    const landNoTrimmed = landNo.replace(/\s/g, '');
-    if (landNoTrimmed === this.plsChoose) {
-      return;
-    }
-    this.landNo = landNo;
+    localStorage.removeItem('selectedRow');
+    localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
+
     this.showLandDetails();
     this.changeRef.detectChanges();
   }
   showLandDetails() {
-    if (this.landNo && this.subDistrictNameTrimmed) {
-      // tslint:disable-next-line:max-line-length
-      const filteredTable = this.data.allTable.filter(
+    if (
+      this.selectedRow.city &&
+      this.selectedRow.district &&
+      this.selectedRow.land &&
+      this.selectedRow.subDistrict &&
+      this.selectedRow.land
+    ) {
+      const selectedTableItem = this.data.allTable.find(
         (item) =>
-          item.land === this.landNo &&
-          item.subDistrict === this.subDistrictNameTrimmed
+          item.city === this.selectedRow.city &&
+          item.region === this.selectedRow.region &&
+          item.district === this.selectedRow.district &&
+          item.subDistrict === this.selectedRow.subDistrict
       );
-      this.area = filteredTable[0].area;
-      this.excellence = filteredTable[0].excellence;
+
+      if (selectedTableItem) {
+        console.log('كله تمام يا حاج خالد');
+      } else {
+        console.log('عندك مشكله و شوفو شغلكم صح بقي');
+        console.log(this.selectedRow);
+        console.log('اعمل ريفريش بقي');
+      }
+      this.area = selectedTableItem.area;
+      this.excellence = selectedTableItem.excellence;
+      this.selectedRow.area = this.area;
+      this.selectedRow.excellence = this.excellence;
+      localStorage.removeItem('selectedRow');
+      localStorage.setItem('selectedRow', JSON.stringify(this.selectedRow));
       this.showResults = true;
-      console.log(filteredTable);
-      this.setLandItems(filteredTable);
       this.cantGo = false;
     } else {
       alert(
@@ -213,15 +238,5 @@ export class Step2Component implements OnInit {
       );
     }
     this.changeRef.detectChanges();
-  }
-  setLandItems(items) {
-    localStorage.setItem('mesaha', items[0].area);
-    localStorage.setItem('city', items[0].city);
-    localStorage.setItem('neih', items[0].district);
-    localStorage.setItem('excellence', items[0].excellence);
-    localStorage.setItem('area', items[0].land);
-    localStorage.setItem('reg', items[0].region);
-    localStorage.setItem('adj', items[0].subDistrict);
-    // localStorage.setItem('area', items[7]);
   }
 }
