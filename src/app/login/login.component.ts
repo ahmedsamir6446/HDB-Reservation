@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       password: ['', Validators.required],
       username: ['', Validators.required],
+      recaptchaReactive: [null, Validators.required],
     });
   }
 
@@ -52,11 +53,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userLoggedIn', 'true');
       this.usersAuth.saveUser(this.userAuthObjectIndex);
       this.router.navigateByUrl('/home');
-    }
-  }
-  resolved(ev: string) {
-    if (ev) {
-      this.capatchResponded = true;
     }
   }
   getuserId(userId: number) {

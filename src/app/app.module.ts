@@ -17,28 +17,31 @@ import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 import { UploaderComponent } from './uploader/uploader.component';
-import { RecaptchaModule } from 'ng-recaptcha';
-
-
+import {
+  RecaptchaModule,
+  RECAPTCHA_LANGUAGE,
+  RECAPTCHA_SETTINGS,
+  RecaptchaSettings,
+} from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'uploader', component: UploaderComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'reserve/:id', component: ReserveComponent},
-  { path: 'rules', component: RulesComponent},
-  { path: 'rules/:id', component: RulesComponent},
-  { path: 'step1', component: Step1Component},
-  { path: 'step1/:id', component: Step1Component},
-  { path: 'step2', component: Step2Component},
-  { path: 'step2/:id', component: Step2Component},
-  { path: 'step3', component: Step3Component},
-  { path: 'step3/:id', component: Step3Component},
-  { path: 'step4', component: Step4Component},
-  { path: 'set-timer', component: SetTimerComponent},
-  { path: 'step4/:id', component: Step4Component},
-
+  { path: 'login', component: LoginComponent },
+  { path: 'reserve/:id', component: ReserveComponent },
+  { path: 'rules', component: RulesComponent },
+  { path: 'rules/:id', component: RulesComponent },
+  { path: 'step1', component: Step1Component },
+  { path: 'step1/:id', component: Step1Component },
+  { path: 'step2', component: Step2Component },
+  { path: 'step2/:id', component: Step2Component },
+  { path: 'step3', component: Step3Component },
+  { path: 'step3/:id', component: Step3Component },
+  { path: 'step4', component: Step4Component },
+  { path: 'set-timer', component: SetTimerComponent },
+  { path: 'step4/:id', component: Step4Component },
 ];
 @NgModule({
   declarations: [
@@ -55,7 +58,6 @@ const appRoutes: Routes = [
     RulesComponent,
     UploaderComponent,
     SetTimerComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -63,12 +65,25 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule,
-    RecaptchaModule
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   providers: [
-    {provide: NgbDateParserFormatter,
-      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY') }
-],
-  bootstrap: [AppComponent]
+    {
+      provide: NgbDateParserFormatter,
+      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp',
+      } as RecaptchaSettings,
+    },
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      useValue: 'ar',
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

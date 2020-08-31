@@ -45,17 +45,14 @@
               <div class="help-block with-errors" style="color: red"></div>
             </div>
 
-            <div>
-              <re-captcha
-                (resolved)="resolved($event)"
-                siteKey="6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp"
-              ></re-captcha>
+            <div style="margin-bottom: 20px;">
+              <re-captcha formControlName="recaptchaReactive"></re-captcha>
             </div>
             <div class="row">
               <div class="col-md-3 col-sm-6 col-xs-6">
                 <button
                   type="submit"
-                  [disabled]="loginForm.invalid && capatchResponded"
+                  [disabled]="loginForm.invalid"
                   class="btn green-bg white green-border"
                 >
                   الدخول
