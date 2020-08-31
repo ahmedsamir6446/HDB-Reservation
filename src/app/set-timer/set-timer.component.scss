@@ -1,0 +1,19 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.wrapper {
+  direction: ltr !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+
+}
+
+:ng-deep {
+  .wrapper {
+    .mat-form-field-flex {
+      display: flex;
+    align-items: center;
+    gap: 20px;
+    }
+  }
+}
