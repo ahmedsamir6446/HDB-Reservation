@@ -30,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [
     {

@@ -1,19 +1,25 @@
-<div class="wrapper">
-  <form [formGroup]="timerForm" (ngSubmit)="onsubmit()">
-    <div fxFlex.gt-md="0 0 40%" fxLayoutAlign.gt-md="end center">
-      <mat-form-field fxFlex="0 1 300px" fxFlex.lt-sm="0 0 100%">
-        <input
-          matInput
-          formControlName="date"
-          [matDatepicker]="date"
-          placeholder="Set date"
-        />
-        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-        <mat-datepicker #date></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <button class="btn green-bg white green-border" mat-button type="submit">
-      Set Date
-    </button>
-  </form>
-</div>
+<form class="wrapper" [formGroup]="timerForm" (ngSubmit)="onsubmit()">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="date"
+      [matDatepicker]="date"
+      placeholder="Set date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+    <mat-datepicker #date></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="time"
+      [ngxTimepicker]="time"
+      placeholder="Set time"
+    />
+    <ngx-material-timepicker #time></ngx-material-timepicker>
+  </mat-form-field>
+
+  <button class="btn green-bg white green-border" mat-button type="submit">
+    Set Date
+  </button>
+</form>

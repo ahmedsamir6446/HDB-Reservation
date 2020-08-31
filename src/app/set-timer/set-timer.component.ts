@@ -11,12 +11,13 @@ export class SetTimerComponent implements OnInit {
   public timerForm: FormGroup;
   constructor(protected fb: FormBuilder) {
     this.timerForm = this.fb.group({
-      date: ['']
+      date: ['2020-08-31T20:57:48.121052+02:00'],
+      time: ['2020-08-31T20:57:48.121052+02:00'],
     });
   }
 
   ngOnInit() {}
-  onsubmit(){
-
+  onsubmit() {
+    console.log(this.timerForm.value);
   }
 }
