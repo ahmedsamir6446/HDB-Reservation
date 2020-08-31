@@ -25,12 +25,15 @@
     "@angular/router": "^6.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
     "@syncfusion/ej2-angular-calendars": "^17.1.42",
+    "babel-polyfill": "^6.26.0",
     "bootstrap-with-rtl": "^1.0.3",
     "core-js": "^2.5.4",
     "moment": "^2.24.0",
     "ng-recaptcha": "^4.2.1",
+    "ngx-captcha": "^8.0.1",
     "rxjs": "~6.2.0",
     "typescript": "~2.9.2",
+    "xlsx": "^0.16.6",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

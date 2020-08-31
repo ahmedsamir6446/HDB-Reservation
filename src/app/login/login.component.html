@@ -1,5 +1,5 @@
 <app-header [auth]="false"></app-header>
-<section style="padding: 20px;">
+<section style="padding: 20px">
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -7,20 +7,23 @@
           <div class="box-title mb-30">
             <h2 class="fs-20">دخول مستخدم حالي</h2>
           </div>
-          <div class="clearfix">
+          <form
+            [formGroup]="loginForm"
+            (ngSubmit)="onLoginSubmit()"
+            class="clearfix"
+          >
             <div class="form-group">
               <label class="label">الرقم القومي</label>
               <input
                 type="text"
                 name="username"
                 id="username"
-                [(ngModel)]="userId"
-                (ngModelChange)="getuserId(userId)"
+                formControlName="username"
                 class="form-control"
                 placeholder="الرقم القومي"
                 required
               />
-              <div class="help-block with-errors" style="color: red;"></div>
+              <div class="help-block with-errors" style="color: red"></div>
             </div>
 
             <div class="form-group">
@@ -29,8 +32,7 @@
                 type="password"
                 name="password"
                 id="password"
-                [(ngModel)]="userpw"
-                (ngModelChange)="getuserpw(userpw)"
+                formControlName="password"
                 class="form-control"
                 placeholder="كلمة المرور"
                 required
@@ -38,19 +40,27 @@
               <span
                 toggle="#password"
                 class="fa fa-fw fa-eye field-icon toggle-password"
-                style="margin-left: 5px;"
+                style="margin-left: 5px"
               ></span>
-              <div class="help-block with-errors" style="color: red;"></div>
+              <div class="help-block with-errors" style="color: red"></div>
             </div>
 
-            <!-- <div class="cap">
-              <input type="checkbox" #cap (change)="true" />
-              <img src="../../assets/img/cap.png" />
-            </div> -->
+            <div>
+              <ngx-recaptcha2
+                #captchaElem
+                [siteKey]="siteKey"
+                (success)="handleSuccess($event)"
+                [useGlobalDomain]="false"
+                [size]="'normal'"
+                [hl]="'ar'"
+                formControlName="recaptcha"
+              >
+              </ngx-recaptcha2>
+            </div>
             <div class="row">
               <div class="col-md-3 col-sm-6 col-xs-6">
                 <button
-                  (click)="onSubmits()"
+                  type="submit"
                   [disabled]="!userId || !userpw"
                   class="btn green-bg white green-border"
                 >
@@ -60,7 +70,7 @@
               <div class="col-md-1 col-sm-6 col-xs-6 text-center"></div>
               <div class="col-md-8 col-sm-6 col-xs-6 text-center">
                 <div class="form-tip pt-10">
-                  <a class="green" style="font-weight: bold;"
+                  <a class="green" style="font-weight: bold"
                     >نسيت كلمة المرور / ارسل كلمة مرور جديدة؟</a
                   >
                 </div>
@@ -71,7 +81,7 @@
               class="text-danger"
               >الرقم القومي او كلمة المرور غير صحيحه
             </small>
-          </div>
+          </form>
         </div>
       </div>
     </div>

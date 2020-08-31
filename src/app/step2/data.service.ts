@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
+  data = {};
   govList = [
     { govId: 1, gov: 'القاهرة', value: '1'},
     { govId: 11, gov: 'دمياط', value: '11'},

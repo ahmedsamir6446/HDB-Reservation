@@ -1,29 +1,30 @@
-import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RecaptchaModule } from 'ng-recaptcha';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
 import { ReserveComponent } from './reserve/reserve.component';
+import { RulesComponent } from './rules/rules.component';
+import { SetTimerComponent } from './set-timer/set-timer.component';
 import { Step1Component } from './step1/step1.component';
 import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
-import { RouterModule, Routes } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RulesComponent } from './rules/rules.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgbDatepickerConfig, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { UploaderComponent } from './uploader/uploader.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'uploader', component: UploaderComponent },
   { path: 'login', component: LoginComponent},
   { path: 'reserve/:id', component: ReserveComponent},
   { path: 'rules', component: RulesComponent},
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'step3', component: Step3Component},
   { path: 'step3/:id', component: Step3Component},
   { path: 'step4', component: Step4Component},
+  { path: 'set-timer', component: SetTimerComponent},
   { path: 'step4/:id', component: Step4Component},
 
 ];
@@ -51,15 +53,17 @@ const appRoutes: Routes = [
     Step3Component,
     Step4Component,
     RulesComponent,
+    UploaderComponent,
+    SetTimerComponent,
 
   ],
   imports: [
     BrowserModule,
-    RecaptchaModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule,
+    NgxCaptchaModule
   ],
   providers: [
     {provide: NgbDateParserFormatter,
