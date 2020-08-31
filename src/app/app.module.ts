@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +17,7 @@ import { Step2Component } from './step2/step2.component';
 import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
 import { UploaderComponent } from './uploader/uploader.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -63,7 +63,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule,
-    NgxCaptchaModule
+    RecaptchaModule
   ],
   providers: [
     {provide: NgbDateParserFormatter,

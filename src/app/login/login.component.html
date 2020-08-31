@@ -46,22 +46,16 @@
             </div>
 
             <div>
-              <ngx-recaptcha2
-                #captchaElem
-                [siteKey]="siteKey"
-                (success)="handleSuccess($event)"
-                [useGlobalDomain]="false"
-                [size]="'normal'"
-                [hl]="'ar'"
-                formControlName="recaptcha"
-              >
-              </ngx-recaptcha2>
+              <re-captcha
+                (resolved)="resolved($event)"
+                siteKey="6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp"
+              ></re-captcha>
             </div>
             <div class="row">
               <div class="col-md-3 col-sm-6 col-xs-6">
                 <button
                   type="submit"
-                  [disabled]="!userId || !userpw"
+                  [disabled]="loginForm.invalid && capatchResponded"
                   class="btn green-bg white green-border"
                 >
                   الدخول

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   userpwStatus;
   userLoggedIn;
   public loginForm: FormGroup;
+  capatchResponded = false;
   public siteKey = '6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp';
 
   constructor(
@@ -26,7 +27,6 @@ export class LoginComponent implements OnInit {
     protected fb: FormBuilder
   ) {
     this.loginForm = this.fb.group({
-      recaptcha: ['', Validators.required],
       password: ['', Validators.required],
       username: ['', Validators.required],
     });
@@ -54,7 +54,11 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/home');
     }
   }
-  handleSuccess($event) {}
+  resolved(ev: string) {
+    if (ev) {
+      this.capatchResponded = true;
+    }
+  }
   getuserId(userId: number) {
     this.userId = userId;
   }

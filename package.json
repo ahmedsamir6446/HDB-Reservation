@@ -29,10 +29,8 @@
     "bootstrap-with-rtl": "^1.0.3",
     "core-js": "^2.5.4",
     "moment": "^2.24.0",
-    "ng-recaptcha": "^4.2.1",
-    "ngx-captcha": "^8.0.1",
+    "ng-recaptcha": "^4.3.0",
     "rxjs": "~6.2.0",
-    "typescript": "~2.9.2",
     "xlsx": "^0.16.6",
     "zone.js": "~0.8.26"
   },
@@ -55,7 +53,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "^2.9.2"
   },
   "engines": {
     "node": "8.9.4",
