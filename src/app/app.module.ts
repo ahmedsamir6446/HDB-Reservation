@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,6 +32,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { HttpClientModule } from '@angular/common/http';
+import { TimeService } from './time.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -81,7 +88,10 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [
     {
@@ -98,6 +108,7 @@ const appRoutes: Routes = [
       provide: RECAPTCHA_LANGUAGE,
       useValue: 'ar',
     },
+    TimeService
   ],
   bootstrap: [AppComponent],
 })

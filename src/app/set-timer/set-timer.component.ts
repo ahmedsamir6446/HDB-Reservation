@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
+import { TimeService } from '../time.service';
 
 @Component({
   selector: 'app-set-timer',
@@ -9,14 +9,21 @@ import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 })
 export class SetTimerComponent implements OnInit {
   public timerForm: FormGroup;
-  constructor(protected fb: FormBuilder) {
+  constructor(protected fb: FormBuilder, protected timeService: TimeService) {
     this.timerForm = this.fb.group({
-      date: ['2020-08-31T20:57:48.121052+02:00'],
-      time: ['2020-08-31T20:57:48.121052+02:00'],
+      date: [''],
+      time: [''],
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.timeService.getCurrrentTime().subscribe(time => {
+      console.log(time);
+    });
+    this.timeService.getTime().subscribe(time => {
+      console.log(time);
+    });
+  }
   onsubmit() {
     console.log(this.timerForm.value);
   }
