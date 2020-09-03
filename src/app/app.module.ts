@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
+// import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
 import { ReserveComponent } from './reserve/reserve.component';
 import { RulesComponent } from './rules/rules.component';
 import { SetTimerComponent } from './set-timer/set-timer.component';
@@ -79,7 +79,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    NgbModule,
+    // NgbModule,
     RecaptchaModule,
     RecaptchaFormsModule,
     BrowserAnimationsModule,
@@ -96,10 +96,10 @@ const appRoutes: Routes = [
     AngularFirestoreModule
   ],
   providers: [
-    {
-      provide: NgbDateParserFormatter,
-      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
-    },
+    // {
+    //   provide: NgbDateParserFormatter,
+    //   useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
+    // },
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
