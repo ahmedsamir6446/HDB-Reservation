@@ -9,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
+// import { NgbDateCustomParserFormatterService } from './ngb-date-custom-parser-formatter.service';
 import { ReserveComponent } from './reserve/reserve.component';
 import { RulesComponent } from './rules/rules.component';
 import { SetTimerComponent } from './set-timer/set-timer.component';
@@ -96,10 +96,10 @@ const appRoutes: Routes = [
     AngularFirestoreModule
   ],
   providers: [
-    {
-      provide: NgbDateParserFormatter,
-      useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
-    },
+    // {
+    //   provide: NgbDateParserFormatter,
+    //   useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
+    // },
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
