@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 export interface TimerData {
   time: string;
-  apply: boolean;
+  active: boolean;
 }
 
 @Injectable({

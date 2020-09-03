@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-When deploy app we use >> firestore deploy
+When deploy app we use >> ng build --prod then firebase deploy

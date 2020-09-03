@@ -44,7 +44,7 @@
             class="w-100"
             alt=""
           />
-          <!-- <div *ngIf="(timer | async)?.active" class="reserve-wrapper"> -->
+          <div *ngIf="(timer | async)?.active" class="reserve-wrapper">
           <div class="reserve-wrapper">
             <button
               [routerLink]="['/rules/', selectedLand.id]"
@@ -52,6 +52,7 @@
             >
               احجز الآن
             </button>
+          </div>
           </div>
         </div>
       </div>
