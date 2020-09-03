@@ -55,7 +55,7 @@ const appRoutes: Routes = [
   { path: 'step3', component: Step3Component },
   { path: 'step3/:id', component: Step3Component },
   { path: 'step4', component: Step4Component },
-  { path: 'set-timer', component: SetTimerComponent },
+  // { path: 'set-timer', component: SetTimerComponent },
   { path: 'step4/:id', component: Step4Component },
 ];
 @NgModule({
