@@ -1,9 +1,9 @@
 import { UsersAuthService } from './../users-auth.service';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap, debounceTime } from 'rxjs/operators';
+import { switchMap, tap, debounceTime, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { _getComponentHostLElementNode } from '@angular/core/src/render3/instructions';
+import { TimeService } from '../time.service';
 
 @Component({
   selector: 'app-reserve',
@@ -12,16 +12,19 @@ import { _getComponentHostLElementNode } from '@angular/core/src/render3/instruc
 })
 export class ReserveComponent implements OnInit {
   public landId: number;
+  public timer;
   // public land: Observable<any>;
   public land;
   localStorageAlice = localStorage;
   constructor(
     private route: ActivatedRoute,
     protected auth: UsersAuthService,
-    protected cd: ChangeDetectorRef
+    protected cd: ChangeDetectorRef,
+    protected timeService: TimeService
   ) {}
 
   ngOnInit() {
+    this.timer = this.timeService.getTime();
     this.land = this.route.params.pipe(
       debounceTime(300),
       switchMap((params) =>

@@ -31,10 +31,10 @@ export class Step1Component implements OnInit, AfterViewInit {
   noPrintedBelowImgInID = localStorage.getItem('noPrintedBelowImgInID');
   name = localStorage.getItem('name');
   public payment: string;
-  @ViewChild('paymentMethods') paymentMethods: ElementRef;
-  @ViewChild('paymentNo') paymentNo: ElementRef;
-  @ViewChild('bankBranchName') bankBranchName: ElementRef;
-  @ViewChild('paymentDate') paymentDate: ElementRef;
+  @ViewChild('paymentMethods', {static: false}) paymentMethods: ElementRef;
+  @ViewChild('paymentNo', {static: false}) paymentNo: ElementRef;
+  @ViewChild('bankBranchName', {static: false}) bankBranchName: ElementRef;
+  @ViewChild('paymentDate', {static: false}) paymentDate: ElementRef;
   // @ViewChild('paymentMethods') paymentMethods: ElementRef;
 
 

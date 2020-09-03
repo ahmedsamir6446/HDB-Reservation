@@ -31,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeService } from './time.service';
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatSlideToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,

@@ -9,7 +9,7 @@ import { TimeService } from '../time.service';
 })
 export class SetTimerComponent implements OnInit {
   public timerForm: FormGroup;
-  constructor(protected fb: FormBuilder, protected timeService: TimeService) {
+  constructor(protected fb: FormBuilder, public timeService: TimeService) {
     this.timerForm = this.fb.group({
       date: [''],
       time: [''],
@@ -20,6 +20,8 @@ export class SetTimerComponent implements OnInit {
     this.timeService.getCurrrentTime().subscribe(time => {
       console.log(time);
     });
+    this.timeService.setTimer('dfgdgdfd');
+    this.timeService.setActive(false);
     this.timeService.getTime().subscribe(time => {
       console.log(time);
     });

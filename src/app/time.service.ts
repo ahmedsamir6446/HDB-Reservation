@@ -21,6 +21,15 @@ export class TimeService {
   }
 
   public getTime() {
-    return this.firestore.collection('timer').valueChanges();
+    return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges();
+    // return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').get();
   }
+
+  public setTimer(timer: string) {
+    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ time: timer });
+  }
+  public setActive(activate: boolean) {
+    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ active: activate });
+  }
+
 }
