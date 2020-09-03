@@ -35,8 +35,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeService } from './time.service';
-// import { AngularFireModule } from '@angular/fire';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 
@@ -92,8 +92,8 @@ const appRoutes: Routes = [
     MatInputModule,
     NgxMaterialTimepickerModule,
     HttpClientModule,
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [
     // {
@@ -103,7 +103,7 @@ const appRoutes: Routes = [
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
-        siteKey: '6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp',
+        siteKey: '6LeVaccZAAAAACdSI1imtw0Ld671lBk3XnIFsM47',
       } as RecaptchaSettings,
     },
     {

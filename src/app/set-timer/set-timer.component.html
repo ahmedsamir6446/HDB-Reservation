@@ -24,7 +24,7 @@
       #sliderToggle
       class="ml-1"
       color="warn"
-
+      (change)="timeService.setActive($event.checked)"
     >
     </mat-slide-toggle>
   </div>
