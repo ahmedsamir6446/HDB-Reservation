@@ -20,11 +20,11 @@ export class SetTimerComponent implements OnInit {
     this.timeService.getCurrrentTime().subscribe(time => {
       console.log(time);
     });
-    this.timeService.setTimer('dfgdgdfd');
-    this.timeService.setActive(false);
-    this.timeService.getTime().subscribe(time => {
-      console.log(time);
-    });
+    // this.timeService.setTimer('dfgdgdfd');
+    // this.timeService.setActive(false);
+    // this.timeService.getTime().subscribe(time => {
+      // console.log(time);
+    // });
   }
   onsubmit() {
     console.log(this.timerForm.value);
