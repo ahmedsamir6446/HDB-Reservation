@@ -39,10 +39,11 @@ export class LoginComponent implements OnInit {
   }
   resolved(ev) {
     this.capatchResponded = true;
-
   }
   onLoginSubmit() {
-    if (this.loginForm.invalid || this.capatchResponded) {
+    if (this.loginForm.invalid || !this.capatchResponded) {
+      console.log(this.loginForm.value);
+      console.log(this.capatchResponded);
       return;
     }
     this.userId = this.loginForm.get('username').value;

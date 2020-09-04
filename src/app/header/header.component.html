@@ -1,24 +1,88 @@
 <div id="wrapper">
   <div id="header" class="navbar-toggleable-md sticky clearfix">
+    <div class="menu-mobile" *ngIf="close">
+      <button (click)="showMenu()"  class="btn-menu-close" mat-mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+      <ul *ngIf="!auth" class="ul-menu">
+        <li style="margin-top: 30px">
+          <a class="fs-15" [routerLink]="['/home']">الرئيسية</a>
+        </li>
+        <li>
+          <a class="fs-15">المشاريع</a>
+        </li>
+        <li>
+          <a class="fs-15">الأسئلة الشائعة</a>
+        </li>
+        <li>
+          <a class="fs-15">عن الموقع</a>
+        </li>
+
+        <li>
+          <a class="fs-15">تسجيل مستخدم جديد</a>
+        </li>
+        <li>
+          <a class="fs-15" routerLink="/login">دخول مستخدم حالي</a>
+        </li>
+      </ul>
+      <ul *ngIf="auth" class="ul-menu">
+        <li style="margin-top: 30px">
+          <a class="fs-15" [routerLink]="['/home']">الرئيسية</a>
+        </li>
+        <li>
+          <a class="fs-15">المشاريع</a>
+        </li>
+        <li>
+          <a class="fs-15">الإستعلام</a>
+        </li>
+        <li>
+          <a class="fs-15">استرداد مقدم الدفع</a>
+        </li>
+
+        <li>
+          <a class="fs-15">الاسئله الشائعه</a>
+        </li>
+        <li>
+          <a class="fs-15">عن الموقع</a>
+        </li>
+        <li>
+          <a class="fs-15" (click)="logOut()">تسجيل الخروج</a>
+        </li>
+      </ul>
+    </div>
     <div id="topNav">
       <div class="container">
+        <button (click)="showMenu()" *ngIf="menu" class="btn-menu-burger" mat-icon-button>
+          <mat-icon>menu</mat-icon>
+        </button>
+
         <a class="logo float-left col-lg-5 col-md-6 col-sm-4 col-xs-9">
           <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
           <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
         </a>
-        <a class="logo float-right col-lg-5 col-md-6 col-sm-4 col-xs-9" >
-          <img class="img-fluid" src="../../assets/img/UrbanCommunitiesAuthority.png" alt="" style="float: left;"  />
-          <img class="img-fluid" src="../../assets/img/UrbanCommunitiesAuthority.png" alt="" style="float: left;" />
+        <a class="logo float-right col-lg-5 col-md-6 col-sm-4 col-xs-9">
+          <img
+            class="img-fluid"
+            src="../../assets/img/UrbanCommunitiesAuthority.png"
+            alt=""
+            style="float: left"
+          />
+          <img
+            class="img-fluid"
+            src="../../assets/img/UrbanCommunitiesAuthority.png"
+            alt=""
+            style="float: left"
+          />
         </a>
 
         <div class="navbar float-left submenu-dark">
-          <nav class="nav-main">
+          <nav class="nav-main desktop-menu">
             <ul *ngIf="!auth" id="topMain" class="nav nav-pills nav-main">
               <li class="active">
                 <a class="fs-15" [routerLink]="['/home']">الرئيسية</a>
               </li>
               <li class="active">
-                <a class="fs-15" >المشاريع</a>
+                <a class="fs-15">المشاريع</a>
               </li>
               <li class="active">
                 <a class="fs-15">الأسئلة الشائعة</a>
@@ -31,7 +95,7 @@
                 <a class="fs-15">تسجيل مستخدم جديد</a>
               </li>
               <li class="active">
-                <a class="fs-15" routerLink="/login" >دخول مستخدم حالي</a>
+                <a class="fs-15" routerLink="/login">دخول مستخدم حالي</a>
               </li>
             </ul>
             <ul *ngIf="auth" id="topMain" class="nav nav-pills nav-main">
@@ -39,7 +103,7 @@
                 <a class="fs-15" [routerLink]="['/home']">الرئيسية</a>
               </li>
               <li class="active">
-                <a class="fs-15" >المشاريع</a>
+                <a class="fs-15">المشاريع</a>
               </li>
               <li class="active">
                 <a class="fs-15">الإستعلام</a>
@@ -55,7 +119,7 @@
                 <a class="fs-15">عن الموقع</a>
               </li>
               <li class="active">
-                <a class="fs-15" (click)="logOut()" >تسجيل الخروج</a>
+                <a class="fs-15" (click)="logOut()">تسجيل الخروج</a>
               </li>
             </ul>
           </nav>

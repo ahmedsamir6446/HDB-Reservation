@@ -51,22 +51,54 @@ div.cap img {
   width: 60%;
   margin: 5px 0 20px 0;
 }
-div.cap {position: relative;}
+
+div.cap {
+  position: relative;
+}
+
 div.cap input {
   position: absolute;
-    width: 28px;
-    top: 30px;
-    right: 14px;
-    height: 28px;
+  width: 28px;
+  top: 30px;
+  right: 14px;
+  height: 28px;
 }
+
+.newLine {
+  display: none;
+}
+
+#password.show{
+  background: url(../../assets/img/show.png) no-repeat scroll 7px 10px;
+  padding-left: 30px;
+  background-size: 15px;
+}
+#password.hide{
+  background: url(../../assets/img/hide.png) no-repeat scroll 7px 10px;
+  padding-left: 30px;
+  background-size: 15px;
+}
+
 @media (max-width: 1200px) {
   div.cap input {
-  width: 22px;
+    width: 22px;
     top: 25px;
     right: 12px;
-    height: 22px;}
+    height: 22px;
+  }
 }
+
+@media (max-width: 992px) {
+  .newLine {
+    display: block;
+  }
+  div.form-tip.pt-10{
+    text-align: right;
+  }
+}
+
 @media (min-width: 992px) {
+
   .offset-md-3 {
     margin-right: 25%;
     margin-left: 0px;

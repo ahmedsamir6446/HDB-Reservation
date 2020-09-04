@@ -38,6 +38,7 @@ import { TimeService } from './time.service';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import {MatIconModule} from '@angular/material/icon';
 
 
 const appRoutes: Routes = [
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     NgxMaterialTimepickerModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatIconModule
   ],
   providers: [
     // {
