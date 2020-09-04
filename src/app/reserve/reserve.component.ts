@@ -24,7 +24,9 @@ export class ReserveComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.timer = this.timeService.getTime();
+    this.timeService.getTime().subscribe(timer => {
+      this.timer = timer;
+    });
     this.land = this.route.params.pipe(
       debounceTime(300),
       switchMap((params) =>

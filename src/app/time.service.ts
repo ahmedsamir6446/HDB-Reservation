@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 export interface TimerData {
   time: string;
   active: boolean;
@@ -22,7 +23,7 @@ export class TimeService {
   }
 
   public getTime() {
-    return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges();
+    return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges().pipe(first());
     // return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').get();
   }
 

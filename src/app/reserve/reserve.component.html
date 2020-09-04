@@ -44,7 +44,7 @@
             class="w-100"
             alt=""
           />
-          <div *ngIf="(timer | async)?.active">
+          <div *ngIf="timer?.active">
           <div class="reserve-wrapper">
             <button
               [routerLink]="['/rules/', selectedLand.id]"
