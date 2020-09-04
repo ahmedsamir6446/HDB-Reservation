@@ -24,7 +24,7 @@ import {
   RECAPTCHA_SETTINGS,
   RecaptchaSettings,
 } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -80,8 +80,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     // NgbModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
+    RecaptchaModule.forRoot(),
+    // RecaptchaFormsModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -100,12 +100,12 @@ const appRoutes: Routes = [
     //   provide: NgbDateParserFormatter,
     //   useFactory: () => new NgbDateCustomParserFormatterService('DD/MM/YYYY'),
     // },
-    {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: {
-        siteKey: '6LeVaccZAAAAACdSI1imtw0Ld671lBk3XnIFsM47',
-      } as RecaptchaSettings,
-    },
+    // {
+    //   provide: RECAPTCHA_SETTINGS,
+    //   useValue: {
+    //     siteKey: '6Ldc0McZAAAAAA06Hqi14Apb5RhDxPFrMPNWnqym',
+    //   } as RecaptchaSettings,
+    // },
     {
       provide: RECAPTCHA_LANGUAGE,
       useValue: 'ar',

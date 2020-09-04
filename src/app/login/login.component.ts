@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   userLoggedIn;
   public loginForm: FormGroup;
   capatchResponded = false;
-  public siteKey = '6LeVn8UZAAAAABe4XabostEOaFS46s3isA81ZHOp';
+  public siteKey = '6Ldc0McZAAAAAA06Hqi14Apb5RhDxPFrMPNWnqym';
 
   constructor(
     public router: Router,
@@ -37,8 +37,12 @@ export class LoginComponent implements OnInit {
     this.idsList = this.usersAuth.idsList;
     this.pwList = this.usersAuth.pwList;
   }
+  resolved(ev) {
+    this.capatchResponded = true;
+
+  }
   onLoginSubmit() {
-    if (this.loginForm.invalid) {
+    if (this.loginForm.invalid || this.capatchResponded) {
       return;
     }
     this.userId = this.loginForm.get('username').value;
