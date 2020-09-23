@@ -39,6 +39,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
+import { SecondStepComponent } from './second-step/second-step.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   { path: 'step1', component: Step1Component },
   { path: 'step1/:id', component: Step1Component },
   { path: 'step2', component: Step2Component },
+  { path: 'second-step', component: SecondStepComponent },
   { path: 'step2/:id', component: Step2Component },
   { path: 'step3', component: Step3Component },
   { path: 'step3/:id', component: Step3Component },
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
     RulesComponent,
     UploaderComponent,
     SetTimerComponent,
+    SecondStepComponent,
   ],
   imports: [
     BrowserModule,

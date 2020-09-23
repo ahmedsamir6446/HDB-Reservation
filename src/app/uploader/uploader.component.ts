@@ -10,12 +10,17 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./uploader.component.css'],
 })
 export class UploaderComponent implements OnInit {
+  public current = new Date();
+  public dateTimeStamp: string;
   constructor(
     protected data: DataService,
     protected firestore: AngularFirestore
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log(this.current.toISOString().substring(0, 19));
+    this.dateTimeStamp = this.current.toISOString().substring(0, 19);
+  }
   onFileChange(event: any) {
     console.log(event);
 
@@ -38,7 +43,11 @@ export class UploaderComponent implements OnInit {
       /* save data */
       const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
       console.log(data);
-      data.map((tableRow) => this.firestore.collection('table').add(tableRow));
+      // create a new table with the uploaded data with time stamp
+      data.map((tableRow) => this.firestore.collection(`table-${this.dateTimeStamp}`).add(tableRow));
+      // Update the last table name
+      this.firestore.collection('last_table_name').doc('lqWbEuCBH59hc6xHDzV2').update({ name: 'table-' + this.dateTimeStamp });
+
       // this.firestore.collection('table').add(data);
 
       // this.data.data = data;
