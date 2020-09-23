@@ -1,3 +1,4 @@
+import { TableLastName } from './second-step/second-step.component';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -25,6 +26,10 @@ export class TimeService {
   public getTime() {
     return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges().pipe(first());
     // return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').get();
+  }
+
+  public getLastTableName(): Observable<TableLastName> {
+    return this.firestore.collection('last_table_name').doc<TableLastName>('lqWbEuCBH59hc6xHDzV2').valueChanges().pipe(first());
   }
 
   public setTimer(timer: string) {

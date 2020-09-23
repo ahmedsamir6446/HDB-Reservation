@@ -3,12 +3,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 export interface TableData {
   id: number;
-  land: string;
+  land: number;
   region: string;
-  area: string;
+  area: number;
   city: string;
   district: string;
-  excellence: string;
+  excellence: number;
   gov: string;
   subdistrict: string;
 }
@@ -18,7 +18,7 @@ export interface TableData {
 export class DataService {
   constructor(protected firestore: AngularFirestore) {
   }
-  public getAllData(): Observable<TableData[]> {
-    return this.firestore.collection<TableData>('table').valueChanges();
+  public getAllData(tableName: string): Observable<TableData[]> {
+    return this.firestore.collection<TableData>(`${tableName}`).valueChanges();
   }
 }

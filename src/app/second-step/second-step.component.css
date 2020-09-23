@@ -29,3 +29,9 @@ button[disabled]{
   background-color: #cccccc!important;
   color: #666666!important;
 }
+div.loader {
+  display: flex;
+  height: 65vh;
+  justify-content: center;
+  align-items: center;
+}

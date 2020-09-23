@@ -1,5 +1,5 @@
 <app-header [auth]="true"></app-header>
-<div class="wrapper">
+<div *ngIf="!loading; else loadingGif" class="wrapper">
   <section class="page-header page-header-xs" id="Reg">
     <div class="container">
       <div class="row">
@@ -17,68 +17,74 @@
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="governorates">المحافظة *</label>
-            <select (change)="donothing()" class="form-control" id="governorates" name="unitGovID">
+            <select (change)="govChanged($event)" class="form-control" id="governorates" name="unitGovID">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let gov of govList" [value]="gov.value">{{gov.gov}}</option> -->
+              <option *ngFor="let gov of govList" [value]="gov">{{gov}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
             <label for="regions">المنطقة *</label>
-            <select (change)="donothing()" name="unitRegionID" class="form-control" id="regions">
+            <select (change)="regionChanged($event)" name="unitRegionID" class="form-control" id="regions">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let region of regionList" [value]="region.value">{{region.region}}</option> -->
+              <option *ngFor="let region of regionList" [value]="region">{{region}}</option>
             </select>
           </div>
           <div class="form-group mt-3">
             <label for="subDistricts">المجاورة *</label>
-            <select (change)="donothing()" name="unitSubDistrictID" class="form-control" id="subDistricts">
+            <select (change)="subDistrictChanged($event)" name="unitSubDistrictID" class="form-control" id="subDistricts">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict.value">{{subDistrict.subDistrict}}</option> -->
+              <option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict">{{subDistrict}}</option>
             </select>
           </div>
-          <div class="form-group mt-3" *ngIf="true">
+          <div class="form-group mt-3" *ngIf="showLabels">
             <h3 class="font-16">المساحة</h3>
-            <!-- <h4 class="cell-detail h-40p">{{area}}</h4> -->
+            <h4 class="cell-detail h-40p">{{area}}</h4>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="cities">المدينة *</label>
-            <select (change)="donothing()" name="unitCityID" class="form-control" id="cities">
+            <select (change)="cityChanged($event)" name="unitCityID" class="form-control" id="cities">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let city of cityList" [value]="city.value">{{city.city}}</option> -->
+              <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
             </select>
           </div>
 
 
           <div class="form-group mt-3">
             <label for="districts">الحى *</label>
-            <select (change)="donothing()" name="unitDistrictID" class="form-control" id="districts">
+            <select (change)="districtChanged($event)" name="unitDistrictID" class="form-control" id="districts">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let district of districtList" [value]="district.value">{{district.district}}</option> -->
+              <option *ngFor="let district of districtList" [value]="district">{{district}}</option>
             </select>
           </div>
 
           <div class="form-group mt-3">
             <label for="landNo">رقم القطعة *</label>
-            <select (change)="donothing()" name="landNo" class="form-control" id="landNo">
+            <select (change)="landChanged($event)" name="landNo" class="form-control" id="landNo">
               <option value="" selected>برجاء الاختيار</option>
-              <!-- <option *ngFor="let land of landList" [value]="land.value">{{land.land}}</option> -->
+              <option *ngFor="let land of landList" [value]="land">{{land}}</option>
             </select>
           </div>
-          <div class="form-group mt-3" *ngIf="">
+          <div class="form-group mt-3" *ngIf="showLabels">
             <h3 class="font-16">نسبة التميز</h3>
-            <!-- <h4 class="cell-detail h-40p">{{excellence}}</h4> -->
+            <h4 class="cell-detail h-40p">{{excellence}}</h4>
           </div>
         </div>
 
       </div>
     </section>
     <div class="text-center">
-      <button (click)="donothing()"  class="btn green-bg white nextbtn">تاكيد </button>
-      <button (click)="donothing()" class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
+      <button (click)="step2Next()" [disabled]="!area || !excellence"  class="btn green-bg white nextbtn">تاكيد </button>
+      <button (click)="step2back()" class="btn green-bg white nextbtn mr-3">رجوع للتعديل</button>
     </div>
   </div>
 
 </div>
+<ng-template #loadingGif>
+  <div class="loader">
+    <img src="../../assets/img/loader.gif" />
+  </div>
+</ng-template>
+
