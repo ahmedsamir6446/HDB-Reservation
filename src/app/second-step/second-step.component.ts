@@ -13,8 +13,6 @@ export class SecondStepComponent implements OnInit {
   public govList: string[];
   public areaList: string[];
   public excellenceList: string[];
-  public districtList: string[];
-  public subDistrictList: string[];
   public landList: string[];
   public cityList: string[];
   constructor(protected service: DataService) {}
