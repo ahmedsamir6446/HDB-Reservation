@@ -32,8 +32,8 @@ export class TimeService {
     return this.firestore.collection('last_table_name').doc<TableLastName>('lqWbEuCBH59hc6xHDzV2').valueChanges().pipe(first());
   }
 
-  public setTimer(timer: string) {
-    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ time: timer });
+  public setDate(date: string) {
+    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ date: date });
   }
   public setActive(activate: boolean) {
     this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ active: activate });

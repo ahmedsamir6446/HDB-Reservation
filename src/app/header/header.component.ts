@@ -8,6 +8,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  date: Date;
   // tslint:disable-next-line:no-input-rename
   @Input() auth: boolean;
   public menu = true;
@@ -16,10 +17,12 @@ export class HeaderComponent implements OnInit {
   // logged: boolean;
   constructor(public router: Router, protected cd: ChangeDetectorRef) {
     // this.logged = this.auth;
+    setInterval(() => {
+      this.date = new Date();
+    }, 1000);
   }
   ngOnInit() {}
   public showMenu() {
-
     if (this.menu) {
       this.close = true;
       this.menu = false;

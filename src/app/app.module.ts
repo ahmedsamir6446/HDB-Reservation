@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -40,6 +40,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import {MatIconModule} from '@angular/material/icon';
 import { SecondStepComponent } from './second-step/second-step.component';
+// import { NgModule, LOCALE_ID } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 
 const appRoutes: Routes = [
@@ -98,7 +105,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     // {
@@ -111,6 +118,8 @@ const appRoutes: Routes = [
     //     siteKey: '6Ldc0McZAAAAAA06Hqi14Apb5RhDxPFrMPNWnqym',
     //   } as RecaptchaSettings,
     // },
+    // {provide: LOCALE_ID, useValue: 'fr-FR' },
+    // {provide: LOCALE_ID, useValue: 'ar-EG' },
     {
       provide: RECAPTCHA_LANGUAGE,
       useValue: 'ar',

@@ -1,6 +1,7 @@
 ul#topMain li a {
   cursor: pointer;
 }
+.timer {}
 
 #header.fixed {
   position: fixed;

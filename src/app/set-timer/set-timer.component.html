@@ -1,3 +1,9 @@
+<p>
+  بص يا خالد انت هتدخل اليوم و الوقت ولازم الاتنيم تدخلهم قبل ما تدوس
+</p>
+<p>
+    بالنسبة لاظهار زر احجز الان : في البدايه هو مخفي انت هتغير الحالة بتاعته و بعدين تدوس  save
+</p>
 <form class="wrapper" [formGroup]="timerForm" (ngSubmit)="onsubmit()">
   <mat-form-field>
     <input
@@ -14,6 +20,7 @@
       matInput
       formControlName="time"
       [ngxTimepicker]="time"
+      [format]="24"
       placeholder="Set time"
     />
     <ngx-material-timepicker #time></ngx-material-timepicker>
@@ -24,12 +31,12 @@
       #sliderToggle
       class="ml-1"
       color="warn"
-      (change)="timeService.setActive($event.checked)"
+      (change)="setActive($event.checked)"
       [checked]="timer?.active"
     >
     </mat-slide-toggle>
   </div>
   <button class="btn green-bg white green-border" mat-button type="submit">
-    Set Date
+    Save
   </button>
 </form>
