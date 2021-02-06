@@ -45,8 +45,11 @@ import { SecondStepComponent } from './second-step/second-step.component';
 import { registerLocaleData } from '@angular/common';
 
 import localeFr from '@angular/common/locales/fr';
+import localeAr from '@angular/common/locales/ar-EG';
 
-registerLocaleData(localeFr);
+
+
+registerLocaleData(localeAr);
 
 
 const appRoutes: Routes = [
@@ -119,7 +122,7 @@ const appRoutes: Routes = [
     //   } as RecaptchaSettings,
     // },
     // {provide: LOCALE_ID, useValue: 'fr-FR' },
-    // {provide: LOCALE_ID, useValue: 'ar-EG' },
+    {provide: LOCALE_ID, useValue: 'ar-EG' },
     {
       provide: RECAPTCHA_LANGUAGE,
       useValue: 'ar',

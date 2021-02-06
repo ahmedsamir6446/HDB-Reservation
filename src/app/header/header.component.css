@@ -1,15 +1,24 @@
 ul#topMain li a {
   cursor: pointer;
 }
-.timer {}
+
+.center {
+  text-align: center;
+}
+
 
 #header.fixed {
   position: fixed;
   border-bottom: rgba(0, 0, 0, 0.08) 1px solid;
 }
 
-.btn-menu-burger {display: none;}
-.menu-mobile {display: none;}
+.btn-menu-burger {
+  display: none;
+}
+
+.menu-mobile {
+  display: none;
+}
 
 @media (min-width: 992px) {
   .navbar-toggleable-md {
@@ -27,12 +36,14 @@ ul#topMain li a {
     align-items: center;
   }
 }
+
 @media (max-width: 992px) {
   #topMain {
     background-color: #fff;
     color: #687482;
     display: block;
   }
+
   #topMain li {
     display: inline-block !important;
     float: right;
@@ -40,6 +51,7 @@ ul#topMain li a {
     border-radius: 0;
     border-bottom: none;
   }
+
   #header #topNav #topMain>li>a {
     height: 40px !important;
     line-height: 40px !important;
@@ -47,15 +59,17 @@ ul#topMain li a {
     color: #687482 !important;
     font-weight: 400;
     background-color: transparent;
-    font-size: .81em!important;
+    font-size: .81em !important;
     display: block;
     position: relative;
     padding-left: 15px;
     padding-right: 15px;
   }
+
   .desktop-menu {
     display: none;
   }
+
   .btn-menu-burger {
     border: 0;
     position: absolute;
@@ -65,6 +79,7 @@ ul#topMain li a {
     display: block;
     z-index: 999;
   }
+
   .btn-menu-close {
     border: 0;
     position: absolute;
@@ -75,9 +90,11 @@ ul#topMain li a {
     padding: 10px;
 
   }
-  .btn-menu-close mat-icon{
+
+  .btn-menu-close mat-icon {
     -webkit-text-stroke: 5px;
   }
+
   .menu-mobile {
     display: block;
     background: #333;
@@ -88,10 +105,12 @@ ul#topMain li a {
     width: 100%;
     z-index: 999;
   }
+
   .menu-mobile ul {
     padding: 25px;
     list-style: none;
   }
+
   .menu-mobile ul li {
     margin: 13px;
     font-size: 15px;

@@ -1,9 +1,10 @@
 import { UsersAuthService } from "./../users-auth.service";
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { switchMap, tap, debounceTime, map } from "rxjs/operators";
+import { switchMap, tap, debounceTime, map, first } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { TimeService } from "../time.service";
+import * as moment from "moment";
 
 @Component({
   selector: "app-reserve",
@@ -14,7 +15,7 @@ export class ReserveComponent implements OnInit {
   public landId: number;
   public timer: any;
   public showBtn = false;
-  public date: Date;
+  public timerDate: Date;
   public currentDate = new Date();
   // public land: Observable<any>;
   public land;
@@ -27,13 +28,30 @@ export class ReserveComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.timeService.getTime().subscribe((timer: any) => {
-      this.timer = timer;
-      this.date = new Date(this.timer.date);
-      if (this.date.getTime() <= this.currentDate.getTime()) {
-        this.showBtn = this.timer.active;
-      }
-    });
+    this.timeService
+      .getTime()
+      .pipe(first())
+      .subscribe((timer: any) => {
+        this.timer = timer;
+        this.timerDate = new Date(this.timer.date);
+        console.log("timerDate :" + this.timerDate);
+        console.log("currentDate :" + this.currentDate);
+        const mometOfCurrentDate = moment(this.currentDate);
+        const mometOfTimerDate = moment(this.timerDate);
+        console.log("timerDate :" + mometOfTimerDate);
+        console.log("currentDate :" + mometOfCurrentDate);
+
+        if (!timer.forceHide) {
+          if (mometOfTimerDate.isBefore(mometOfCurrentDate)) {
+            this.showBtn = this.timer.active;
+            console.log("timerDate is before current date");
+          } else {
+            console.log("timerDate is after current date");
+          }
+        } else {
+          this.showBtn = false;
+        }
+      });
     this.land = this.route.params.pipe(
       debounceTime(300),
       switchMap((params) =>

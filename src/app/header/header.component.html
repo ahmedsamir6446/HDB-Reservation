@@ -1,7 +1,7 @@
 <div id="wrapper">
   <div id="header" class="navbar-toggleable-md sticky clearfix">
     <div class="menu-mobile" *ngIf="close">
-      <button (click)="showMenu()"  class="btn-menu-close" mat-mat-icon-button>
+      <button (click)="showMenu()" class="btn-menu-close" mat-mat-icon-button>
         <mat-icon>close</mat-icon>
       </button>
       <ul *ngIf="!auth" class="ul-menu">
@@ -52,7 +52,12 @@
     </div>
     <div id="topNav">
       <div class="container">
-        <button (click)="showMenu()" *ngIf="menu" class="btn-menu-burger" mat-icon-button>
+        <button
+          (click)="showMenu()"
+          *ngIf="menu"
+          class="btn-menu-burger"
+          mat-icon-button
+        >
           <mat-icon>menu</mat-icon>
         </button>
 
@@ -60,24 +65,26 @@
           <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
           <img class="img-fluid" src="../../assets/img/logo.png" alt="" />
         </a>
-        <a class="logo float-right col-lg-5 col-md-6 col-sm-4 col-xs-9">
-          <img
-            class="img-fluid"
-            src="../../assets/img/UrbanCommunitiesAuthority.png"
-            alt=""
-            style="float: left"
-          />
-          <img
-            class="img-fluid"
-            src="../../assets/img/UrbanCommunitiesAuthority.png"
-            alt=""
-            style="float: left"
-          />
-        </a>
-        <div class="timer">
-          <span>
-            {{date   | date: "fullDate"}} - {{date   | date: "mediumTime"}}
-          </span>
+        <div class="float-right center col-lg-5 col-md-6 col-sm-4 col-xs-9">
+          <a class="logo">
+            <img
+              class="img-fluid"
+              src="../../assets/img/UrbanCommunitiesAuthority.png"
+              alt=""
+              style="float: left"
+            />
+            <img
+              class="img-fluid"
+              src="../../assets/img/UrbanCommunitiesAuthority.png"
+              alt=""
+              style="float: left"
+            />
+          </a>
+          <div class="timer">
+            <span>
+              {{ date | date: "fullDate" }} - {{ date | date: "mediumTime" }}
+            </span>
+          </div>
         </div>
 
         <div class="navbar float-left submenu-dark">

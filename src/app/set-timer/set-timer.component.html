@@ -1,42 +1,44 @@
-<p>
-  بص يا خالد انت هتدخل اليوم و الوقت ولازم الاتنيم تدخلهم قبل ما تدوس
-</p>
-<p>
-    بالنسبة لاظهار زر احجز الان : في البدايه هو مخفي انت هتغير الحالة بتاعته و بعدين تدوس  save
-</p>
-<form class="wrapper" [formGroup]="timerForm" (ngSubmit)="onsubmit()">
-  <mat-form-field>
-    <input
-      matInput
-      formControlName="date"
-      [matDatepicker]="date"
-      placeholder="Set date"
-    />
-    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
-    <mat-datepicker #date></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      formControlName="time"
-      [ngxTimepicker]="time"
-      [format]="24"
-      placeholder="Set time"
-    />
-    <ngx-material-timepicker #time></ngx-material-timepicker>
-  </mat-form-field>
-  <div class="slider-wrapper">
-    <p>Show the button</p>
-    <mat-slide-toggle
-      #sliderToggle
-      class="ml-1"
-      color="warn"
-      (change)="setActive($event.checked)"
-      [checked]="timer?.active"
-    >
-    </mat-slide-toggle>
-  </div>
-  <button class="btn green-bg white green-border" mat-button type="submit">
-    Save
-  </button>
-</form>
+<div>
+  <br />
+
+  <p>  بص يا خالد يا حبيبي، الزرار دايما هيكون مخفي</p>
+  <br />
+  لو انت عايز
+  <h3>تظهره</h3>
+  في وقت معين، دخل الوقت و دوس موافق
+  <form class="wrapper" [formGroup]="timerForm" (ngSubmit)="onsubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="date"
+        [matDatepicker]="date"
+        placeholder="Set date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="time"
+        [ngxTimepicker]="time"
+        [format]="24"
+        placeholder="Set time"
+      />
+      <ngx-material-timepicker #time></ngx-material-timepicker>
+    </mat-form-field>
+    <button class="btn green-bg white green-border" mat-button type="submit">
+      موافق
+    </button>
+  </form>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <p>
+    انما انت لو عايز تقفله علي طول دوس علي الزورار ده
+  </p>
+  <button (click)="forceHide()" class="btn green-bg white green-border" mat-button >اغلق درج المعالق(اقفل الزرار يعني)</button>
+</div>

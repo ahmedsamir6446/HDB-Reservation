@@ -24,7 +24,7 @@ export class TimeService {
   }
 
   public getTime() {
-    return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges().pipe(first());
+    return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').valueChanges().pipe();
     // return this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').get();
   }
 
@@ -37,6 +37,12 @@ export class TimeService {
   }
   public setActive(activate: boolean) {
     this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ active: activate });
+  }
+  public setForceClose(state: boolean) {
+    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ forceHide: state });
+  }
+  public setCurrentStatus(activate: boolean) {
+    this.firestore.collection('timer').doc('WggeXAB35CvUEDNv8RTR').update({ current_status: activate });
   }
 
 }

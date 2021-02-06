@@ -8,10 +8,24 @@
   margin-top: 60px;
   flex-direction: column;
 }
+
 .slider-wrapper {
   display: flex;
 
 }
+
+div {
+  text-align: center;
+
+}
+
+span {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 5px;
+}
+
 p {
   text-align: center;
   margin-top: 40px;
@@ -21,8 +35,8 @@ p {
   .wrapper {
     .mat-form-field-flex {
       display: flex;
-    align-items: center;
-    gap: 20px;
+      align-items: center;
+      gap: 20px;
     }
   }
 }

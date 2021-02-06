@@ -1,21 +1,22 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { TimeService } from '../time.service';
-import { map } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { TimeService } from "../time.service";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-set-timer',
-  templateUrl: './set-timer.component.html',
-  styleUrls: ['./set-timer.component.scss'],
+  selector: "app-set-timer",
+  templateUrl: "./set-timer.component.html",
+  styleUrls: ["./set-timer.component.scss"],
 })
 export class SetTimerComponent implements OnInit {
   public timerForm: FormGroup;
   timer: any;
+  current_status: boolean;
   active: boolean;
   constructor(protected fb: FormBuilder, public timeService: TimeService) {
     this.timerForm = this.fb.group({
-      date: ['', Validators.required],
-      time: ['', Validators.required],
+      date: ["", Validators.required],
+      time: ["", Validators.required],
     });
   }
 
@@ -25,21 +26,24 @@ export class SetTimerComponent implements OnInit {
       this.active = this.timer.active;
     });
   }
-  setActive(checked) {
-    this.active = checked;
+  public forceHide() {
+    this.timeService.setForceClose(true);
+    alert("Btn is hidden");
   }
   onsubmit() {
     if (this.timerForm.invalid) {
-      alert('pls enter date, time');
+      alert("pls enter date, time");
       return;
     } else {
-      const time: string = this.timerForm.get('time').value;
-      const date: Date = this.timerForm.get('date').value;
+      const time: string = this.timerForm.get("time").value;
+      const date: Date = this.timerForm.get("date").value;
       date.setMinutes(+time.substr(3, 2));
       date.setHours(+time.substr(0, 2));
       this.timeService.setActive(this.active);
       this.timeService.setDate(date.toString());
-      alert('Saved');
+      this.timeService.setForceClose(false);
+      alert("Saved");
+      this.timerForm.reset();
     }
   }
 }
