@@ -42,7 +42,7 @@ export class ReserveComponent implements OnInit {
         console.log("currentDate :" + mometOfCurrentDate);
 
         if (!timer.forceHide) {
-          if (mometOfTimerDate.isBefore(mometOfCurrentDate)) {
+          if (mometOfCurrentDate.isAfter(mometOfTimerDate)) {
             this.showBtn = this.timer.active;
             console.log("timerDate is before current date");
           } else {
