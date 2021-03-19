@@ -16,6 +16,7 @@ export class ReserveComponent implements OnInit {
   public timer: any;
   public showBtn = false;
   public timerDate: Date;
+  public loading: boolean;
   public currentDate = new Date();
   // public land: Observable<any>;
   public land;
@@ -28,29 +29,40 @@ export class ReserveComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loading = true;
     this.timeService
       .getTime()
       .pipe(first())
       .subscribe((timer: any) => {
+        this.loading = false;
         this.timer = timer;
-        this.timerDate = new Date(this.timer.date);
-        console.log("timerDate :" + this.timerDate);
-        console.log("currentDate :" + this.currentDate);
-        const mometOfCurrentDate = moment(this.currentDate);
-        const mometOfTimerDate = moment(this.timerDate);
-        console.log("timerDate :" + mometOfTimerDate);
-        console.log("currentDate :" + mometOfCurrentDate);
+        if (timer.active) {
+          this.timerDate = new Date(this.timer.date);
+          console.log("timerDate :" + this.timerDate);
+          console.log("currentDate :" + this.currentDate);
+          const mometOfCurrentDate = moment(this.currentDate);
+          const mometOfTimerDate = moment(this.timerDate);
+          console.log("timerDate :" + mometOfTimerDate);
+          console.log("currentDate :" + mometOfCurrentDate);
 
-        if (!timer.forceHide) {
-          if (mometOfCurrentDate.isAfter(mometOfTimerDate)) {
-            this.showBtn = this.timer.active;
-            console.log("timerDate is before current date");
-          } else {
-            console.log("timerDate is after current date");
-          }
+          // if (!timer.forceHide) {
+          //   if (mometOfCurrentDate.isAfter(mometOfTimerDate)) {
+          //     this.showBtn = this.timer.active;
+          //     console.log("timerDate is before current date");
+          //   } else {
+          //     console.log("timerDate is after current date");
+          //   }
+          // } else {
+          //   this.showBtn = false;
+          // }
+
+          this.showBtn = mometOfCurrentDate.isAfter(mometOfTimerDate)
+            ? true
+            : false;
         } else {
           this.showBtn = false;
         }
+        this.cd.markForCheck();
       });
     this.land = this.route.params.pipe(
       debounceTime(300),

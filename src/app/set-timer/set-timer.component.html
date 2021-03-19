@@ -6,6 +6,14 @@
   لو انت عايز
   <h3>تظهره</h3>
   في وقت معين، دخل الوقت و دوس موافق
+  <br />
+  <span>Last enetred time <br /> {{displayDate}}</span>
+  <br />
+  <span>Current time <br /> {{currentDate | async}}</span>
+  <br />
+  <br/>
+This button is {{showBtn}}
+  <!-- {{ date | date: "fullDate" }} - {{ date | date: "mediumTime" }} -->
   <form class="wrapper" [formGroup]="timerForm" (ngSubmit)="onsubmit()">
     <mat-form-field>
       <input
