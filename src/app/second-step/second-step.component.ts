@@ -1,28 +1,28 @@
-import { switchMap } from 'rxjs/operators';
-import { TimeService } from './../time.service';
-import { DataService, TableData } from './data.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { switchMap } from "rxjs/operators";
+import { TimeService } from "./../time.service";
+import { DataService, TableData } from "./data.service";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 export interface TableLastName {
   name: string;
 }
 @Component({
-  selector: 'app-second-step',
-  templateUrl: './second-step.component.html',
-  styleUrls: ['./second-step.component.css'],
+  selector: "app-second-step",
+  templateUrl: "./second-step.component.html",
+  styleUrls: ["./second-step.component.css"],
 })
 export class SecondStepComponent implements OnInit {
   localStorageAlice = localStorage;
   public loading: boolean;
   public showLabels = false;
-  public area: number;
-  public excellence: number;
+  public area: string;
+  public excellence: string;
   public data: TableData[];
   public regionList: string[];
   public govList: string[];
   public areaList: string[];
   public excellenceList: string[];
-  public landList: number[];
+  public landList: string[];
   public districtList: string[];
   public subDistrictList: string[];
   public cityList: string[];
@@ -31,18 +31,18 @@ export class SecondStepComponent implements OnInit {
     protected service: DataService,
     protected timeService: TimeService,
     protected cd: ChangeDetectorRef,
-    public router: Router,
+    public router: Router
   ) {
     this.selectedSlice = {
-      id: 0,
-      gov: '',
-      city: '',
-      region: '',
-      district: '',
-      subdistrict: '',
-      area: 0,
-      excellence: 0,
-      land: 0,
+      id: "",
+      gov: "",
+      city: "",
+      region: "",
+      district: "",
+      subdistrict: "",
+      area: "",
+      excellence: "",
+      land: "",
     };
     this.cityList = [];
     this.regionList = [];
@@ -62,187 +62,198 @@ export class SecondStepComponent implements OnInit {
       });
   }
   createDataArrays(data: TableData[]) {
+    console.log(data);
+
     this.data = data;
     // trim all string data
-    this.data.map((obj) => {
-      Object.keys(obj).map(
-        (k) => (obj[k] = typeof obj[k] === 'string' ? obj[k].trim() : obj[k])
-      );
-    });
+    // this.data.map((obj) => {
+    //   Object.keys(obj).map(
+    //     (k) => (obj[k] = typeof obj[k] === 'string' ? obj[k].trim() : obj[k])
+    //   );
+    // });
     console.log(this.data);
-
-    // this.regionList = this.data
-    //   .map((newData) => newData.region)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
     this.govList = this.data
       .map((newData) => newData.gov)
       .filter((v, i, a) => a.indexOf(v) === i);
-    // this.areaList = this.data
-    //   .map((newData) => newData.area)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
-    // this.excellenceList = this.data
-    //   .map((newData) => newData.excellence)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
-    // this.districtList = this.data
-    //   .map((newData) => newData.district)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
-    // this.subDistrictList = this.data
-    //   .map((newData) => newData.subdistrict)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
-    // this.landList = this.data
-    //   .map((newData) => newData.land)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
-    // this.cityList = this.data
-    //   .map((newData) => newData.city)
-    //   .filter((v, i, a) => a.indexOf(v) === i);
   }
-  donothing() {}
 
-  public govChanged(ev) {
-    const selectedGov = ev.target.options[ev.target.options.selectedIndex].text;
+  public govChanged(selectedGov: string) {
     // Update selected slice
     this.selectedSlice.gov = selectedGov;
-    this.clearArrays('gov');
+    this.clearArrays("gov");
     const citiesArrayOfGov = this.data.filter(
-      (filteredArray) => filteredArray.gov === selectedGov
+      (dataRow) => dataRow.gov === selectedGov
     );
     this.cityList = citiesArrayOfGov
       .map((newData) => newData.city)
       .filter((v, i, a) => a.indexOf(v) === i);
   }
 
-  public cityChanged(ev) {
-    const selectedCity =
-      ev.target.options[ev.target.options.selectedIndex].text;
+  public cityChanged(selectedCity: string) {
     // Update selected slice
     this.selectedSlice.city = selectedCity;
-    this.clearArrays('city');
+    this.clearArrays("city");
     const regionsArrayOfCity = this.data.filter(
-      (filteredArray) => filteredArray.city === selectedCity
+      (dataRow) =>
+        dataRow.city == selectedCity && dataRow.gov == this.selectedSlice.gov
     );
     this.regionList = regionsArrayOfCity
       .map((newData) => newData.region)
       .filter((v, i, a) => a.indexOf(v) === i);
   }
 
-  public regionChanged(ev) {
-    const selectedRegion =
-      ev.target.options[ev.target.options.selectedIndex].text;
+  public regionChanged(selectedRegion: string) {
     // Update selected slice
     this.selectedSlice.region = selectedRegion;
-    this.clearArrays('region');
+    this.clearArrays("region");
     const districtsArrayOfRegion = this.data.filter(
-      (filteredArray) => filteredArray.region === selectedRegion
+      (dataRow) =>
+        dataRow.region == selectedRegion &&
+        dataRow.city == this.selectedSlice.city &&
+        dataRow.gov == this.selectedSlice.gov
     );
     this.districtList = districtsArrayOfRegion
       .map((newData) => newData.district)
       .filter((v, i, a) => a.indexOf(v) === i);
   }
 
-  public districtChanged(ev) {
-    const selectedDistrict =
-      ev.target.options[ev.target.options.selectedIndex].text;
+  public districtChanged(selectedDistrict: string) {
     // Update selected slice
     this.selectedSlice.district = selectedDistrict;
-    this.clearArrays('district');
+    this.clearArrays("district");
     const subDistrictsArrayOfDistrict = this.data.filter(
-      (filteredArray) => filteredArray.district === selectedDistrict
+      (dataRow) =>
+        dataRow.district == selectedDistrict &&
+        dataRow.region == this.selectedSlice.region &&
+        dataRow.city == this.selectedSlice.city &&
+        dataRow.gov == this.selectedSlice.gov
     );
     this.subDistrictList = subDistrictsArrayOfDistrict
       .map((newData) => newData.subdistrict)
       .filter((v, i, a) => a.indexOf(v) === i);
   }
 
-  public subDistrictChanged(ev) {
-    const selectedSubDistrict =
-      ev.target.options[ev.target.options.selectedIndex].text;
+  public subDistrictChanged(selectedSubDistrict: string) {
     // Update selected slice
     this.selectedSlice.subdistrict = selectedSubDistrict;
-    this.clearArrays('subDistrict');
+    this.clearArrays("subDistrict");
+
     const landsArrayOfSubDistrict = this.data.filter(
-      (filteredArray) => filteredArray.subdistrict === selectedSubDistrict
+      (dataRow) =>
+        dataRow.subdistrict == selectedSubDistrict &&
+        dataRow.district == this.selectedSlice.district &&
+        dataRow.region == this.selectedSlice.region &&
+        dataRow.city == this.selectedSlice.city &&
+        dataRow.gov == this.selectedSlice.gov
     );
+
     this.landList = landsArrayOfSubDistrict
       .map((newData) => newData.land)
       .filter((v, i, a) => a.indexOf(v) === i);
+    this.landList = this.landList.sort((a, b) => +a - +b);
   }
 
-  public landChanged(ev) {
-    const selectedLand = ev.target.options[ev.target.options.selectedIndex]
-      .text as number;
+  public landChanged(selectedLand: string) {
     // Update selected slice
     this.selectedSlice.land = selectedLand;
     this.getInfo();
+    // this.getAltInfo();
   }
 
+  public getAltInfo() {
+    const theSelectedTableRow = this.data.filter(
+      (dataRow) =>
+        dataRow.land == this.selectedSlice.land &&
+        dataRow.subdistrict === this.selectedSlice.subdistrict &&
+        dataRow.district === this.selectedSlice.district &&
+        dataRow.region === this.selectedSlice.region &&
+        dataRow.city == this.selectedSlice.city &&
+        dataRow.gov == this.selectedSlice.gov
+    );
+
+    if (theSelectedTableRow.length > 0) {
+      // this.excellence = theSelectedTableRow.excellence;
+      // this.area = theSelectedTableRow.area;
+      this.showLabels = true;
+      this.cd.markForCheck();
+    } else {
+      console.log(this.selectedSlice);
+
+      alert("something went wrong");
+      window.location.reload();
+    }
+  }
   public getInfo() {
-    const theSelectedTaleRow = this.data.find(
+    const theSelectedTableRow = this.data.find(
       (data) =>
-      // tslint:disable-next-line: triple-equals
+        data.gov == this.selectedSlice.gov &&
         data.city == this.selectedSlice.city &&
-        // tslint:disable-next-line: triple-equals
         data.region == this.selectedSlice.region &&
-        // tslint:disable-next-line: triple-equals
         data.district == this.selectedSlice.district &&
-        // tslint:disable-next-line: triple-equals
         data.subdistrict == this.selectedSlice.subdistrict &&
-        // tslint:disable-next-line: triple-equals
         data.land == this.selectedSlice.land
     );
-    this.excellence = theSelectedTaleRow.excellence;
-    this.area = theSelectedTaleRow.area;
-    this.showLabels = true;
-    this.cd.markForCheck();
+    if (theSelectedTableRow) {
+      this.excellence = theSelectedTableRow.excellence;
+      this.area = theSelectedTableRow.area;
+      this.showLabels = true;
+      this.cd.markForCheck();
+    } else {
+      console.log(this.selectedSlice);
+
+      alert("something went wrong");
+      window.location.reload();
+    }
   }
 
   public clearArrays(name: string) {
     switch (name) {
-      case 'gov':
+      case "gov":
         this.cityList.length = 0;
-        this.selectedSlice.city = '';
+        this.selectedSlice.city = "";
         this.regionList.length = 0;
-        this.selectedSlice.region = '';
+        this.selectedSlice.region = "";
         this.districtList.length = 0;
-        this.selectedSlice.district = '';
+        this.selectedSlice.district = "";
         this.subDistrictList.length = 0;
-        this.selectedSlice.subdistrict = '';
+        this.selectedSlice.subdistrict = "";
         this.landList.length = 0;
-        this.selectedSlice.land = 0;
+        this.selectedSlice.land = "";
         break;
-      case 'city':
+      case "city":
         this.regionList.length = 0;
-        this.selectedSlice.region = '';
+        this.selectedSlice.region = "";
         this.districtList.length = 0;
-        this.selectedSlice.district = '';
+        this.selectedSlice.district = "";
         this.subDistrictList.length = 0;
-        this.selectedSlice.subdistrict = '';
+        this.selectedSlice.subdistrict = "";
         this.landList.length = 0;
-        this.selectedSlice.land = 0;
+        this.selectedSlice.land = "";
         break;
-      case 'region':
+      case "region":
         this.districtList.length = 0;
-        this.selectedSlice.district = '';
+        this.selectedSlice.district = "";
         this.subDistrictList.length = 0;
-        this.selectedSlice.subdistrict = '';
+        this.selectedSlice.subdistrict = "";
         this.landList.length = 0;
-        this.selectedSlice.land = 0;
+        this.selectedSlice.land = "";
         break;
-      case 'district':
+      case "district":
         this.subDistrictList.length = 0;
-        this.selectedSlice.subdistrict = '';
+        this.selectedSlice.subdistrict = "";
         this.landList.length = 0;
-        this.selectedSlice.land = 0;
+        this.selectedSlice.land = "";
         break;
-      case 'subDistrict':
+      case "subDistrict":
         this.landList.length = 0;
-        this.selectedSlice.land = 0;
+        this.selectedSlice.land = "";
         break;
     }
   }
   step2Next() {
-    this.router.navigateByUrl(`/step3/${localStorage.getItem('chosenLand')}`);
+    this.router.navigateByUrl(`/step3/${localStorage.getItem("chosenLand")}`);
   }
   step2back() {
-    this.router.navigateByUrl(`/step1/${localStorage.getItem('chosenLand')}`);
+    this.router.navigateByUrl(`/step1/${localStorage.getItem("chosenLand")}`);
   }
 }

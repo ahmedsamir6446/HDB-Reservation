@@ -20,7 +20,7 @@ export class UploaderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.current.toISOString().substring(0, 19));
+    console.log(this.current.toISOString().substring(0, 19));
     this.dateTimeStamp = this.current.toISOString().substring(0, 19);
   }
   onFileChange(event: any) {
@@ -48,9 +48,20 @@ export class UploaderComponent implements OnInit {
       const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
       console.log(data);
       // create a new table with the uploaded data with time stamp
-      data.map((tableRow) =>
-        this.firestore.collection(`table-${this.dateTimeStamp}`).add(tableRow)
-      );
+      data.map((tableRow) => {
+        // map every value of the object to be trimmed and make it string if it's number on the goo.
+        Object.keys(tableRow).map(
+          (k) =>
+            (tableRow[k] =
+              typeof tableRow[k] == "string"
+                ? tableRow[k].trim()
+                : tableRow[k].toString().trim())
+        );
+        console.log(tableRow);
+        return this.firestore
+          .collection(`table-${this.dateTimeStamp}`)
+          .add(tableRow);
+      });
       // Update the last table name
       this.firestore
         .collection("last_table_name")
@@ -58,7 +69,7 @@ export class UploaderComponent implements OnInit {
         .update({ name: "table-" + this.dateTimeStamp })
         .then(() => {
           this.loading = false;
-      this.cdr.markForCheck();
+          this.cdr.markForCheck();
           console.log("Document successfully written!");
         })
         .catch((error) => {

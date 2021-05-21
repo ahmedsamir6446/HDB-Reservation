@@ -17,7 +17,7 @@
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="governorates">المحافظة *</label>
-            <select (change)="govChanged($event)" class="form-control" id="governorates" name="unitGovID">
+            <select (change)="govChanged($event.target.value)" class="form-control" id="governorates" name="unitGovID">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let gov of govList" [value]="gov">{{gov}}</option>
             </select>
@@ -25,14 +25,14 @@
 
           <div class="form-group mt-3">
             <label for="regions">المنطقة *</label>
-            <select (change)="regionChanged($event)" name="unitRegionID" class="form-control" id="regions">
+            <select (change)="regionChanged($event.target.value)" name="unitRegionID" class="form-control" id="regions">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let region of regionList" [value]="region">{{region}}</option>
             </select>
           </div>
           <div class="form-group mt-3">
             <label for="subDistricts">المجاورة *</label>
-            <select (change)="subDistrictChanged($event)" name="unitSubDistrictID" class="form-control" id="subDistricts">
+            <select (change)="subDistrictChanged($event.target.value)" name="unitSubDistrictID" class="form-control" id="subDistricts">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let subDistrict of subDistrictList" [value]="subDistrict">{{subDistrict}}</option>
             </select>
@@ -45,7 +45,7 @@
         <div class="col-6">
           <div class="form-group mt-3">
             <label for="cities">المدينة *</label>
-            <select (change)="cityChanged($event)" name="unitCityID" class="form-control" id="cities">
+            <select (change)="cityChanged($event.target.value)" name="unitCityID" class="form-control" id="cities">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let city of cityList" [value]="city">{{city}}</option>
             </select>
@@ -54,7 +54,7 @@
 
           <div class="form-group mt-3">
             <label for="districts">الحى *</label>
-            <select (change)="districtChanged($event)" name="unitDistrictID" class="form-control" id="districts">
+            <select (change)="districtChanged($event.target.value)" name="unitDistrictID" class="form-control" id="districts">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let district of districtList" [value]="district">{{district}}</option>
             </select>
@@ -62,7 +62,7 @@
 
           <div class="form-group mt-3">
             <label for="landNo">رقم القطعة *</label>
-            <select (change)="landChanged($event)" name="landNo" class="form-control" id="landNo">
+            <select (change)="landChanged($event.target.value)" name="landNo" class="form-control" id="landNo">
               <option value="" selected>برجاء الاختيار</option>
               <option *ngFor="let land of landList" [value]="land">{{land}}</option>
             </select>

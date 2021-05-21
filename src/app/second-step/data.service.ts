@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 export interface TableData {
-  id: number;
-  land: number;
+  id: string;
+  land: string;
   region: string;
-  area: number;
+  area: string;
   city: string;
   district: string;
-  excellence: number;
+  excellence: string;
   gov: string;
   subdistrict: string;
 }
